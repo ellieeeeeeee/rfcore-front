@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import router from "next/router";
-import { Container, Link, Stack, styled } from "@mui/material";
+import { Box, Container, Link, Stack, styled } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import HamburgerNav from "./HamburgerNav";
@@ -23,15 +23,17 @@ export default function Header() {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Image
-          src="/logo_color.png"
-          alt="logo"
-          width={147}
-          height={36}
-          onClick={() => {
-            router.push("/");
-          }}
-        />
+        <Box>
+          <Image
+            src="/logo_color.png"
+            alt="logo"
+            width={147}
+            height={36}
+            onClick={() => {
+              router.push("/");
+            }}
+          />
+        </Box>
         <Stack direction="row" className="nav">
           {navItem.map((item) => (
             <div key={item.name}>
@@ -64,12 +66,13 @@ const HeaderBox = styled(Stack)`
     display: none;
     width: 24px;
     height: 24px;
-    &svg {
+    & svg {
       font-size: 2.4rem;
     }
   }
   & a {
     color: #222;
+    font-size: 2rem;
   }
   @media (max-width: 992px) {
     .nav {

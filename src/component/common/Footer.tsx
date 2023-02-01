@@ -65,6 +65,9 @@ const FooterBox = styled(Box)(({ theme }) => ({
   "& .MuiGrid-item": {
     color: theme.palette.info.dark,
   },
+  "& .logo-box": {
+    maxWidth: "194px",
+  },
   "& .title-style-1 h6": {
     minWidth: "94px",
   },

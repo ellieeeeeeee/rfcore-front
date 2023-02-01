@@ -15,12 +15,14 @@ export default function News() {
             <NewsList container direction="column">
               <Grid item className="text">
                 <Typography variant="body2">View more</Typography>
-                <Image
-                  src="/icon_arrow_gray.svg"
-                  alt="arrow"
-                  width={5}
-                  height={10}
-                />
+                <Box>
+                  <Image
+                    src="/icon_arrow_gray.svg"
+                    alt="arrow"
+                    width={5}
+                    height={10}
+                  />
+                </Box>
               </Grid>
               <NewsItem item>
                 <SubText>

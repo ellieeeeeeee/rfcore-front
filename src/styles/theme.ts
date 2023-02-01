@@ -35,15 +35,17 @@ export const theme = createTheme({
       light: "#f4f4f4",
     },
   },
-
+  // #333, #222, #555, #9a9a9a, #ddd, #3c3c3c, #999, #ccc
+  //bg: #ebebeb, #f4f4f4, #aaa
+  //f4f4f4 - ebebeb - ddd - ccc - 9a9a9a -  999  - 555 -  3c3c3c - 333  - 222
   components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        html: {
-          fontSize: 10,
-        },
-      },
-    },
+    // MuiCssBaseline: {
+    //   styleOverrides: {
+    //     html: {
+    //       fontSize: "62.5%",
+    //     },
+    //   },
+    // },
     MuiTypography: {
       styleOverrides: {
         root: {
@@ -97,6 +99,7 @@ export const theme = createTheme({
         },
       },
     },
+    //20 60 24 18 40 32 14 16 28
     MuiButton: {
       defaultProps: {
         disableRipple: true,
@@ -107,7 +110,7 @@ export const theme = createTheme({
           style: {
             fontFamily: "Poppins",
             color: "#fff",
-            padding: "13px 0",
+            padding: "1.3rem 0",
             borderRadius: 0,
             boxShadow: "none",
             width: "100%",
@@ -123,7 +126,7 @@ export const theme = createTheme({
             fontFamily: "Poppins",
             color: "#fff",
             backgroundColor: "#1D75CD",
-            padding: "12px 0",
+            padding: "1.2rem 0",
             borderRadius: 40,
             boxShadow: "none",
             width: "100%",
@@ -139,24 +142,24 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           input: {
-            padding: "12px 16px",
+            padding: "1.2rem 1.6rem",
             border: "1px solid #E6E6E6",
             borderRadius: 0,
             "&::placeholder": {
               color: "#aaa",
               fontSize: 16,
-              lineHeight: "24px",
+              lineHeight: "2.4rem",
               fontWeight: 400,
             },
           },
           textarea: {
-            padding: "10px",
+            padding: "1rem",
             border: "1px solid #E6E6E6;",
             borderRadius: 0,
             "&::placeholder": {
               color: "#aaa",
               fontSize: 16,
-              lineHeight: "24px",
+              lineHeight: "2.4rem",
               fontWeight: 400,
             },
           },
