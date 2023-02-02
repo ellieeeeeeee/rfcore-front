@@ -20,38 +20,30 @@ export const theme = createTheme({
     secondary: {
       main: "#000",
       light: "#fff",
-      contrastText: "#555", //body text 색상
+      contrastText: "#9a9a9a", // 클릭 가능한 그레이
     },
     //gray
     info: {
-      main: "#222",
-      dark: "#3c3c3c",
-      light: "#999",
-    },
-    //gray
-    success: {
-      main: "#ebebeb",
-      dark: "#e6e6e6",
-      light: "#f4f4f4",
+      main: "#222", //타이틀
+      dark: "#ddd", //라인
+      light: "ccc", //클릭 불가능한 그레이
     },
   },
-  // #333, #222, #555, #9a9a9a, #ddd, #3c3c3c, #999, #ccc
-  //bg: #ebebeb, #f4f4f4, #aaa
-  //f4f4f4 - ebebeb - ddd - ccc - 9a9a9a -  999  - 555 -  3c3c3c - 333  - 222
   components: {
-    // MuiCssBaseline: {
-    //   styleOverrides: {
-    //     html: {
-    //       fontSize: "62.5%",
-    //     },
-    //   },
-    // },
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          fontSize: 10,
+          fontWeight: 400,
+          fontFamily: "Poppins",
+        },
+      },
+    },
     MuiTypography: {
       styleOverrides: {
         root: {
           fontFamily: "Poppins",
         },
-
         h1: {
           fontSize: "6rem",
           lineHeight: "9rem",

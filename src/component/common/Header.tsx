@@ -61,25 +61,26 @@ export default function Header() {
     </Container>
   );
 }
-const HeaderBox = styled(Stack)`
-  .hamburger {
-    display: none;
-    width: 24px;
-    height: 24px;
-    & svg {
-      font-size: 2.4rem;
-    }
-  }
-  & a {
-    color: #222;
-    font-size: 2rem;
-  }
-  @media (max-width: 992px) {
-    .nav {
-      display: none;
-    }
-    .hamburger {
-      display: block;
-    }
-  }
-`;
+
+const HeaderBox = styled(Stack)(({ theme }) => ({
+  "& .hamburger": {
+    display: "none",
+    width: "2.4rem",
+    height: "2.4rem",
+    "& svg": {
+      fontSize: "2.4rem",
+    },
+  },
+  "& a": {
+    color: theme.palette.info.main,
+    fontSize: "2rem",
+  },
+  [theme.breakpoints.down("md")]: {
+    "& .nav": {
+      display: "none",
+      "& .hamburhger": {
+        display: "block",
+      },
+    },
+  },
+}));

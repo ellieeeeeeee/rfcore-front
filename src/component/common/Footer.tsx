@@ -6,19 +6,19 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <FooterBox>
-      <Container maxWidth="xl" sx={{ py: 7.5 }}>
-        <Grid container>
-          <Grid item xs={12} lg={2} className="item">
+      <Container maxWidth="xl">
+        <Grid container spacing={4}>
+          <Grid item xs={12} lg={2.5} className="item">
             <Box className="logo-box">
               <Image src="/logo_black.png" alt="logo" width={147} height={36} />
             </Box>
           </Grid>
-          <Grid item xs={12} lg={7} className="item">
+          <Grid item xs={12} lg={6} className="item">
             <Typography variant="subtitle1">HEAD OFFICE</Typography>
 
             <Item direction="row" className="title-style-1">
               <Title variant="subtitle2">Head office</Title>
-              <Text variant="caption">
+              <Text variant="caption" style={{ maxWidth: "589px" }}>
                 C-708, Bundang Technopark, 744, Pangyo-ro, Bundang-gu,
                 Seongnam-si, Gyeonggi-do, Republic of Korea
               </Text>
@@ -35,13 +35,13 @@ export default function Footer() {
             <Item direction="row">
               <Text
                 variant="subtitle2"
-                style={{ color: theme.palette.info.dark }}
+                style={{ color: theme.palette.info.main }}
               >
                 Copyright © 2022 RFcore. All rights reserved.
               </Text>
             </Item>
           </Grid>
-          <Grid item xs={12} lg={3} className="item">
+          <Grid item xs={12} lg={3.5} className="item">
             <Typography variant="subtitle1">SUPPORT</Typography>
             <Item direction="row" className="title-style-2">
               <Title variant="subtitle2">General inquirles</Title>
@@ -61,9 +61,10 @@ export default function Footer() {
   );
 }
 const FooterBox = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.success.main,
+  backgroundColor: "#ebebeb",
+  padding: "6rem 0",
   "& .MuiGrid-item": {
-    color: theme.palette.info.dark,
+    color: theme.palette.info.main,
   },
   "& .logo-box": {
     maxWidth: "194px",
@@ -91,11 +92,11 @@ const Title = styled(Typography)(({ theme }) => ({
   minWidth: "fit-content",
   fontWeight: 500,
   margin: "0 4rem 2rem 0",
-  color: theme.palette.info.dark,
+  color: theme.palette.info.main,
   [theme.breakpoints.down("xl")]: {
     margin: "0 3.2rem 2rem 0",
   },
 }));
 const Text = styled(Typography)(({ theme }) => ({
-  color: theme.palette.info.main,
+  color: theme.palette.secondary.contrastText,
 }));

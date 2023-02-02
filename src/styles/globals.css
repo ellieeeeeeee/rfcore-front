@@ -4,10 +4,9 @@
 html,
 body {
   font-family: "Poppins", sans-serif;
+  font-size: 62.5%;
   /* height: 100%; */
   width: 100%;
-  font-size: 62.5%;
-  font-weight: 400;
 }
 * {
   margin: 0;
@@ -22,8 +21,8 @@ body {
   box-sizing: border-box;
 }
 body {
+  font-family: "Poppins", sans-serif;
   color: #000;
-  font-size: 62.5%;
   line-height: 18px;
 }
 ul,
@@ -61,58 +60,6 @@ a:hover {
   text-decoration: none;
 }
 
-textarea::placeholder {
-  color: #b9b9be;
-  font-weight: 400;
-}
-textarea:disabled {
-  background-color: #f9f9f9;
-  color: #b9b9be;
-}
-textarea:focus {
-  border-color: #7ebaff;
-}
-select {
-  display: inline-block;
-  width: 100%;
-  height: 40px;
-  border: 1px solid #dddde0;
-  border-radius: 4px;
-  color: #000;
-  font-size: 24px;
-  -moz-user-select: auto;
-  -webkit-user-select: auto;
-  -ms-user-select: auto;
-  user-select: auto;
-  /* -webkit-appearance: none;
-  -moz-appearance: none; */
-  outline: none;
-}
-select:invalid {
-  color: #b9b9be;
-}
-
-input[type="image"],
-input[type="reset"],
-input[type="button"],
-input[type="submit"] {
-  cursor: pointer;
-}
-input[type="text"]::-ms-clear {
-  display: none;
-}
-input[type="password"]::-ms-clear {
-  display: none;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* input[type="number"] {
-   -moz-appearance: textfield; 
-*/
-
 hr,
 caption {
   display: none;
@@ -146,10 +93,7 @@ label {
 fieldset {
   border: 0;
 }
-input[type="checkbox"],
-input[type="radio"] {
-  display: none;
-}
+
 i {
   display: inline-block;
   background-size: cover;
@@ -158,4 +102,10 @@ i {
   vertical-align: middle;
   font-size: 0;
 }
-/* gray color 코드*/
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

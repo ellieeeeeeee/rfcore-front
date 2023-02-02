@@ -4,15 +4,15 @@ import Slide from "./applications/Slide";
 
 export default function Applications() {
   return (
-    <ApplicationsBox py={20}>
+    <ApplicationsBox>
       <Container maxWidth="xl">
         <Typography variant="h1">Applications</Typography>
         <Typography variant="body1">
           Find out more about RFCore around you
         </Typography>
         <Slide />
-        <Box mt={5} textAlign="center">
-          <Typography mb={2.5}>COMMUNICATION</Typography>
+        <Box textAlign="center">
+          <Typography>COMMUNICATION</Typography>
           <Typography variant="body2">
             Simple explanation on related applications
           </Typography>
@@ -22,11 +22,15 @@ export default function Applications() {
   );
 }
 
-const ApplicationsBox = styled(Box)`
-  background: #144096;
-  color: #fff;
-  & > div > p {
-    color: #ccc;
-    margin-bottom: 10rem;
-  }
-`;
+const ApplicationsBox = styled(Box)(({ theme }) => ({
+  padding: "16rem 0",
+  backgroundColor: "#144096",
+  color: theme.palette.secondary.light,
+  " & > div > p": {
+    color: theme.palette.secondary.light,
+    marginBottom: "10rem",
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0 ",
+  },
+}));
