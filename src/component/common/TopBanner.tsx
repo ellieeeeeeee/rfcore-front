@@ -12,7 +12,7 @@ import { subtle } from "crypto";
 import { transform } from "typescript";
 
 interface Props {
-  image?: string;
+  image?: boolean;
   title?: string;
   subTitle1?: string;
   subTitle2?: any;
@@ -29,7 +29,7 @@ export default function TopBanner({
   buttonTxt2,
 }: Props) {
   return (
-    <BannerBox image="">
+    <BannerBox image>
       <Container maxWidth="xl">
         {/* TODO: 카테고리 들어갈 영역 만들기(상품 하위 카테고리) */}
         <Typography variant="h2" sx={{ mb: "2rem" }}>
@@ -65,21 +65,30 @@ export default function TopBanner({
   );
 }
 interface BgStyleProps {
-  image: string;
+  image: boolean;
 }
 const BannerBox = styled(Box, {
   shouldForwardProp: (prop) => prop !== "image",
 })<BgStyleProps>(({ image, theme }) => ({
   padding: `6rem 0`,
-  ...(image !== ""
-    ? {
-        background: `url("/banner_bg_01.png")`,
-      }
+  ...(image === true
+    ? { background: `url("/banner_bg_01.png")` }
     : { background: `url("/banner_bg_02.png") #F6F6F6 center` }),
+  "& h2": {
+    marginBottom: "2rem",
+    ...(image === true
+      ? { color: theme.palette.secondary.light }
+      : { color: theme.palette.info.main }),
+  },
   "& .banner-text": {
-    color: theme.palette.secondary.contrastText,
+    //color: theme.palette.secondary.contrastText,
     alignItems: "center",
     justifyContent: "space-between",
+    "& .title p": {
+      ...(image === true
+        ? { color: theme.palette.info.light }
+        : { color: theme.palette.secondary.contrastText }),
+    },
     "& .title-list": {
       display: "flex",
       "& p": {

@@ -26,7 +26,7 @@ export const theme = createTheme({
     info: {
       main: "#222", //타이틀
       dark: "#ddd", //라인
-      light: "ccc", //클릭 불가능한 그레이
+      light: "#ccc", //클릭 불가능한 그레이
     },
   },
   components: {

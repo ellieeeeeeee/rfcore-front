@@ -109,3 +109,17 @@ i {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+.inMobile {
+  display: none;
+}
+.inPc {
+  display: block;
+}
+@media (max-width: 768px) {
+  .inMobile {
+    display: block;
+  }
+  .inPc {
+    display: none;
+  }
+}
