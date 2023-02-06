@@ -14,36 +14,7 @@ export default function index() {
         subTitle1="Founded in 2000, RFcore Co. Ltd is a global leader in design, develop and manufacture the power amplifier solution for defense, commercial and industrial market application."
         image
       />
-      <Ci>
-        <Container maxWidth="xl">
-          <Typography variant="h1">CI Download</Typography>
-          <Grid container spacing={12.5}>
-            <Grid item xs={12} md={6} className="img-box">
-              {/* <Image src="/logo_color.png" alt="logo" layout="fill" /> */}
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <a download>
-                <Typography variant="body1">PNG Download</Typography>
-                <Image
-                  src="/company/icon_download.svg"
-                  alt="download"
-                  width={18}
-                  height={25}
-                />
-              </a>
-              <a download>
-                <Typography variant="body1">AI Download</Typography>
-                <Image
-                  src="/company/icon_download.svg"
-                  alt="download"
-                  width={18}
-                  height={25}
-                />
-              </a>
-            </Grid>
-          </Grid>
-        </Container>
-      </Ci>
+
       <Technology>
         <Container maxWidth="xl">
           <Typography variant="h1" className="border-style">
@@ -124,6 +95,41 @@ export default function index() {
           </Grid>
         </Container>
       </Promise>
+      <Ci>
+        <Container maxWidth="xl">
+          <Typography variant="h1">CI Download</Typography>
+          <Grid container className="content">
+            <Grid item xs={12} md={6} className="img-box">
+              {/* <Image
+                src="/logo_color.png"
+                alt="logo"
+                width={720}
+                height={300}
+              /> */}
+            </Grid>
+            <Grid item xs={12} md={6} className="download-box">
+              <a download>
+                <Typography variant="body1">PNG Download</Typography>
+                <Image
+                  src="/company/icon_download.svg"
+                  alt="download"
+                  width={18}
+                  height={25}
+                />
+              </a>
+              <a download>
+                <Typography variant="body1">AI Download</Typography>
+                <Image
+                  src="/company/icon_download.svg"
+                  alt="download"
+                  width={18}
+                  height={25}
+                />
+              </a>
+            </Grid>
+          </Grid>
+        </Container>
+      </Ci>
       <Banner title="R&D Capability" />
     </>
   );
@@ -179,4 +185,26 @@ const Promise = styled(Box)(({ theme }) => ({
     },
   },
 }));
-const Ci = styled(Box)(({ theme }) => ({}));
+const Ci = styled(Box)(({ theme }) => ({
+  padding: "16rem 0",
+  ".content": {
+    marginTop: "10rem",
+  },
+  ".img-box": {
+    border: "1px solid #ddd",
+    // marginRight: "5rem",
+  },
+  ".download-box": {
+    borderTop: "1px solid #ddd",
+    borderBottom: "1px solid #ddd",
+    a: {
+      display: "flex",
+      padding: "5.7rem 4.2rem 5.7rem 0",
+      justifyContent: "space-between",
+
+      ":first-child": {
+        borderBottom: "1px solid #ddd",
+      },
+    },
+  },
+}));
