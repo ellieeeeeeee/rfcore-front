@@ -18,28 +18,36 @@ const navItem = [
       { name: "PR Center", href: "/company/center" },
     ],
   },
-  // {
-  //   id: 2,
-  //   name: "PRODUCT",
-  //   href: "/product",
-  //   lnb: ["Amplifiers", "MMICs", "Sub-systems", "Customized Solution"],
-  // },
-  // { id: 3, name: "APPLICATIONS", href: "/applications" },
-  // { id: 4, name: "CAREERS", href: "/careers" },
-  // {
-  //   id: 5,
-  //   name: "CONTACT",
-  //   href: "/contact",
-  //   lnb: ["Get Inquires", "Contact us"],
-  // },
+  {
+    id: 2,
+    name: "PRODUCT",
+    href: "/product",
+    lnb: [
+      { name: "Amplifiers", href: "/product" },
+      { name: "MMICs", href: "/product/mmic" },
+      { name: "Sub-systems", href: "/product/systems" },
+      { name: "Customized Solution", href: "/product/solution" },
+    ],
+  },
+  { id: 3, name: "APPLICATIONS", href: "/applications" },
+  { id: 4, name: "CAREERS", href: "/careers" },
+  {
+    id: 5,
+    name: "CONTACT",
+    href: "/contact",
+    lnb: [
+      { name: "Get Inquires", href: "/contact" },
+      { name: "Contact us", href: "/contact/ask" },
+    ],
+  },
 ];
 
 export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const pathName = useRouter().pathname;
-  const pathRoute = pathName.split("/")[2];
-  console.log(pathRoute);
+  const pathRoute = pathName.split("/")[1];
+
   return (
     <>
       <Container maxWidth="xl">
@@ -71,6 +79,8 @@ export default function Header() {
                   href={item.href}
                   variant="subtitle2"
                   className={pathName === item.href ? "active" : ""}
+                  onMouseOver={() => console.log("item.name", item.name)}
+                  //마우스 올렸을 때의 item name이랑 lnb의 name이 같은
                 >
                   {item.name}
                 </Link>
@@ -94,29 +104,40 @@ export default function Header() {
         )}
       </Container>
       {isHovering === true && (
-        <Container
-          maxWidth="xl"
+        <Box
           style={{ borderTop: "1px solid #ddd" }}
-          onMouseOut={() => setIsHovering(false)}
+          onMouseLeave={() => setIsHovering(false)}
         >
-          {navItem &&
-            navItem.map((item) => (
-              <Lnb key={item.id}>
-                <Typography>{item.name}</Typography>
-                <Stack className="lnb-list">
-                  {item.lnb.map((lnb) => (
-                    <Link
-                      href={lnb.href}
-                      key={lnb.name}
-                      className={pathName === lnb.href ? "active" : ""}
-                    >
-                      {lnb.name}
-                    </Link>
-                  ))}
-                </Stack>
-              </Lnb>
-            ))}
-        </Container>
+          <Container maxWidth="xl">
+            <Lnb>
+              {navItem &&
+                navItem.map((item) => (
+                  <>
+                    {"/" + pathRoute === item.href ? (
+                      <Typography className="title" key={item.name}>
+                        {item.name}{" "}
+                      </Typography>
+                    ) : (
+                      ""
+                    )}
+                    <Stack className="lnb-list">
+                      {item.lnb &&
+                        pathName === item.href &&
+                        item.lnb.map((lnb) => (
+                          <Link
+                            href={lnb.href}
+                            key={lnb.name}
+                            className={pathName === lnb.href ? "active" : ""}
+                          >
+                            {lnb.name && lnb.name}
+                          </Link>
+                        ))}
+                    </Stack>
+                  </>
+                ))}
+            </Lnb>
+          </Container>
+        </Box>
       )}
     </>
   );
@@ -142,28 +163,29 @@ const HeaderBox = styled(Stack)(({ theme }) => ({
   [theme.breakpoints.down("md")]: {
     "& .nav": {
       display: "none",
-      "& .hamburhger": {
+      "& .hamburger": {
         display: "block",
       },
     },
   },
 }));
+
 const Lnb = styled(Stack)(({ theme }) => ({
   padding: "6rem 0",
-  " > p": {
+  " .title": {
     fontSize: "4.8rem",
     fontWeight: 600,
     lineHeight: "7.2rem",
-    marginBottom: "2rem",
   },
   " .lnb-list": {
     flexDirection: "row",
+
     a: {
-      marginRight: "4rem",
       fontSize: "2rem",
       lineHeight: "3rem",
       fontWeight: 500,
       color: theme.palette.info.main,
+      marginTop: "2rem 4rem  0 0",
     },
     "a.active": {
       color: theme.palette.primary.main,

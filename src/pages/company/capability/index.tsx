@@ -15,8 +15,8 @@ export default function index() {
       <Global>
         <Container maxWidth="xl">
           <Typography variant="h1">Global Top-Tier Partner, RF core</Typography>
-          <Grid container xs={12} md={4}>
-            <Grid item className="item">
+          <Grid container>
+            <Grid item xs={12} md={4} className="item">
               <Typography variant="body1" className="title">
                 <span>R</span>eliable Service
               </Typography>
