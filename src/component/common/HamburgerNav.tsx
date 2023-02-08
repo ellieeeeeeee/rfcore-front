@@ -112,4 +112,18 @@ const NavBox = styled(Box)(({ theme }) => ({
       marginBottom: "2rem",
     },
   },
+  [theme.breakpoints.down("md")]: {
+    " details summary": {
+      p: {
+        fontSize: "1.6rem",
+        lineHeight: "2.4rem",
+      },
+    },
+    "details[open] > div": {
+      a: {
+        fontSize: "1.6rem",
+        lineHeight: "2.4rem",
+      },
+    },
+  },
 }));
