@@ -1,8 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import router, { useRouter } from "next/router";
-import { Box, Container, Link, Stack, styled, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Container, Link, Stack, styled } from "@mui/material";
 
 import HamburgerNav from "./HamburgerNav";
 
@@ -29,7 +28,16 @@ const navItem = [
       { name: "Customized Solution", href: "/product/solution" },
     ],
   },
-  { id: 3, name: "APPLICATIONS", href: "/applications" },
+  {
+    id: 3,
+    name: "APPLICATIONS",
+    href: "/applications",
+    lnb: [
+      { name: "COMMUNICATION", href: "/applications" },
+      { name: "RADIO & DATA LINK", href: "/applications" },
+      { name: "RADAR & ELECTRONIC WARFARE", href: "/applications" },
+    ],
+  },
   { id: 4, name: "CAREERS", href: "/careers" },
   {
     id: 5,
@@ -52,12 +60,11 @@ export default function Header() {
     <>
       <Container maxWidth="xl">
         <HeaderBox
-          sx={{ my: 4 }}
           direction="row"
           justifyContent="space-between"
           alignItems="center"
         >
-          <Box>
+          <Stack className="logo-box">
             <Image
               src="/logo_color.png"
               alt="logo"
@@ -67,32 +74,29 @@ export default function Header() {
                 router.push("/");
               }}
             />
-          </Box>
-          <Stack
-            direction="row"
-            className="nav"
-            onMouseOver={() => setIsHovering(true)}
-          >
-            {navItem.map((item) => (
-              <div key={item.name}>
-                <Link
-                  href={item.href}
-                  variant="subtitle2"
-                  className={pathName === item.href ? "active" : ""}
-                  onMouseOver={() => console.log("item.name", item.name)}
-                  //마우스 올렸을 때의 item name이랑 lnb의 name이 같은
-                >
-                  {item.name}
-                </Link>
-              </div>
-            ))}
           </Stack>
           <Stack
-            direction="column"
-            className="hamburger"
+            direction="row"
+            className="inPc"
+            onMouseOver={() => setIsHovering(true)}
+          >
+            {navItem &&
+              navItem.map((item) => (
+                <Link key={item.id} href={item.href} variant="subtitle2">
+                  {item.name}
+                </Link>
+              ))}
+          </Stack>
+          <Stack
+            className="hamburger inMobile"
             onClick={() => setNavOpen(true)}
           >
-            <MenuIcon />
+            <Image
+              src="/icon_hamburger.svg"
+              alt="hamburger"
+              width={18}
+              height={16}
+            />
           </Stack>
         </HeaderBox>
         {navOpen && (
@@ -103,73 +107,31 @@ export default function Header() {
           />
         )}
       </Container>
-      {isHovering === true && (
-        <Box
-          style={{ borderTop: "1px solid #ddd" }}
-          onMouseLeave={() => setIsHovering(false)}
-        >
-          <Container maxWidth="xl">
-            <Lnb>
-              {navItem &&
-                navItem.map((item) => (
-                  <>
-                    {"/" + pathRoute === item.href ? (
-                      <Typography className="title" key={item.name}>
-                        {item.name}{" "}
-                      </Typography>
-                    ) : (
-                      ""
-                    )}
-                    <Stack className="lnb-list">
-                      {item.lnb &&
-                        pathName === item.href &&
-                        item.lnb.map((lnb) => (
-                          <Link
-                            href={lnb.href}
-                            key={lnb.name}
-                            className={pathName === lnb.href ? "active" : ""}
-                          >
-                            {lnb.name && lnb.name}
-                          </Link>
-                        ))}
-                    </Stack>
-                  </>
-                ))}
-            </Lnb>
-          </Container>
-        </Box>
-      )}
     </>
   );
 }
 
 const HeaderBox = styled(Stack)(({ theme }) => ({
-  "& .hamburger": {
-    display: "none",
-    width: "2.4rem",
-    height: "2.4rem",
-    "& svg": {
-      fontSize: "2.4rem",
-    },
+  padding: "1.8rem 0",
+  " .logo-box": {
+    minWidth: "147px",
   },
   "& a": {
     color: theme.palette.info.main,
     fontSize: "2rem",
-    margin: " 0 4rem ",
+    margin: " 0 3.6rem ",
   },
   "& a.active": {
     color: theme.palette.primary.main,
   },
   [theme.breakpoints.down("md")]: {
-    "& .nav": {
-      display: "none",
-      "& .hamburger": {
-        display: "block",
-      },
+    " .logo-box img": {
+      width: "8.9rem",
+      height: "2.2rem",
     },
   },
 }));
-
+// const Item = styled(Box)(({ theme }) => ({}));
 const Lnb = styled(Stack)(({ theme }) => ({
   padding: "6rem 0",
   " .title": {

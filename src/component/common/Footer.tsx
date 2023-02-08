@@ -1,4 +1,3 @@
-import { theme } from "@/styles/theme";
 import { Box, Button, Grid, Stack, styled, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Image from "next/image";
@@ -8,7 +7,7 @@ export default function Footer() {
     <FooterBox>
       <Container maxWidth="xl">
         <Grid container spacing={4}>
-          <Grid item xs={12} lg={2.5} className="item">
+          <Grid item xs={12} lg={2.5}>
             <Box className="logo-box">
               <Image src="/logo_black.png" alt="logo" width={147} height={36} />
             </Box>
@@ -16,44 +15,46 @@ export default function Footer() {
           <Grid item xs={12} lg={6} className="item">
             <Typography variant="subtitle1">HEAD OFFICE</Typography>
 
-            <Item direction="row" className="title-style-1">
-              <Title variant="subtitle2">Head office</Title>
-              <Text variant="caption" style={{ maxWidth: "589px" }}>
+            <Item direction="row">
+              <Title variant="body2">Head office</Title>
+              <Text variant="body2">
                 C-708, Bundang Technopark, 744, Pangyo-ro, Bundang-gu,
                 Seongnam-si, Gyeonggi-do, Republic of Korea
               </Text>
             </Item>
-            <Item direction="row" className="title-style-1">
-              <Title variant="subtitle2">Tel</Title>
+            <Item direction="row">
+              <Title variant="body2">Tel</Title>
               <Box>
-                <Text variant="caption">+82-31-000-0000 (HQ)</Text>
-                <Text variant="caption">
+                <Text variant="body2">+82-31-000-0000 (HQ)</Text>
+                <Text variant="body2">
                   +82-31-000-0000 (International call)
                 </Text>
               </Box>
             </Item>
-            <Item direction="row">
-              <Text
-                variant="subtitle2"
-                style={{ color: theme.palette.info.main }}
-              >
+            <Item direction="row" className="copy-text">
+              <Text variant="body2">
                 Copyright © 2022 RFcore. All rights reserved.
               </Text>
             </Item>
           </Grid>
           <Grid item xs={12} lg={3.5} className="item">
             <Typography variant="subtitle1">SUPPORT</Typography>
-            <Item direction="row" className="title-style-2">
-              <Title variant="subtitle2">General inquirles</Title>
-              <Text variant="caption">abcd@rfCore.com </Text>
+            <Item direction="row">
+              <Title variant="body2">General inquirles</Title>
+              <Text variant="body2">abcd@rfCore.com </Text>
             </Item>
-            <Item direction="row" className="title-style-2">
-              <Title variant="subtitle2">Career</Title>
-              <Text variant="caption">abcd@rfCore.com</Text>
+            <Item direction="row">
+              <Title variant="body2">Career</Title>
+              <Text variant="body2">abcd@rfCore.com</Text>
             </Item>
             <Item>
               <Button variant="text">Go to Inquiries</Button>
             </Item>
+          </Grid>
+          <Grid item className="copy-text-m">
+            <Text variant="body2">
+              Copyright © 2022 RFcore. All rights reserved.
+            </Text>
           </Grid>
         </Grid>
       </Container>
@@ -63,21 +64,52 @@ export default function Footer() {
 const FooterBox = styled(Box)(({ theme }) => ({
   backgroundColor: "#ebebeb",
   padding: "6rem 0",
-  "& .MuiGrid-item": {
-    color: theme.palette.info.main,
+  " .item": {
+    h6: {
+      fontWeight: 600,
+      color: theme.palette.info.main,
+    },
   },
   "& .logo-box": {
     maxWidth: "194px",
   },
-  "& .title-style-1 h6": {
-    minWidth: "94px",
+  ".copy-text p": {
+    fontWeight: 500,
+    color: theme.palette.info.main,
   },
-  "& .title-style-2 h6": {
-    minWidth: "137px",
+  ".copy-text-m": {
+    display: "none",
   },
   [theme.breakpoints.down("lg")]: {
-    "& .item:not(:last-child)": {
-      marginBottom: "3.6rem",
+    padding: "4rem 0",
+    ".MuiGrid-item": {
+      paddingTop: "2rem",
+    },
+    ".MuiGrid-item:first-child": {
+      display: "none",
+    },
+    ".item": {
+      h6: {
+        paddingBottom: "1rem",
+      },
+    },
+    ".copy-text ": {
+      display: "none",
+    },
+    ".copy-text-m": {
+      display: "block",
+    },
+  },
+  [theme.breakpoints.down("md")]: {
+    " .item > div:last-child": {
+      display: "none",
+    },
+    ".copy-text-m": {
+      p: {
+        fontSize: "1.2rem",
+        fontWeight: 500,
+        color: theme.palette.info.main,
+      },
     },
   },
 }));
@@ -85,18 +117,25 @@ const FooterBox = styled(Box)(({ theme }) => ({
 const Item = styled(Stack)(({ theme }) => ({
   marginTop: "2rem",
   [theme.breakpoints.down("lg")]: {
-    marginTop: "1.2rem",
+    display: "block",
+    marginTop: "1rem",
   },
 }));
+
 const Title = styled(Typography)(({ theme }) => ({
   minWidth: "fit-content",
   fontWeight: 500,
   margin: "0 4rem 2rem 0",
   color: theme.palette.info.main,
-  [theme.breakpoints.down("xl")]: {
-    margin: "0 3.2rem 2rem 0",
+  [theme.breakpoints.down("lg")]: {
+    margin: "0 0 1rem ",
   },
 }));
+
 const Text = styled(Typography)(({ theme }) => ({
-  color: theme.palette.secondary.contrastText,
+  color: theme.palette.info.contrastText,
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1rem",
+    lineHeight: "1.8rem",
+  },
 }));

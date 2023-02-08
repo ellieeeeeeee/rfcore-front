@@ -12,50 +12,48 @@ import { Stack } from "@mui/system";
 export default function MainSlide() {
   SwiperCore.use([Navigation]);
 
-  //   const [firstSwiper, setFirstSwiper] = useState<Swiper | null>(null);
-  //   const [secondSwiper, setSecondSwiper] = useState<Swiper | null>(null);
   return (
     <>
-      <ThumnailSwiper
+      <ThumbnailSwiper
         slidesPerView={4}
         navigation
         modules={[Controller]}
         // onSwiper={setFirstSwiper}
         // controller={{ control: secondSwiper }}
       >
-        <ThumnailSlide>
+        <ThumbnailSlide>
           <Typography
             variant="body2"
             color={theme.palette.secondary.contrastText}
           >
             Amplifiers
           </Typography>
-        </ThumnailSlide>
-        <ThumnailSlide>
+        </ThumbnailSlide>
+        <ThumbnailSlide>
           <Typography
             variant="body2"
             color={theme.palette.secondary.contrastText}
           >
             MMICs
           </Typography>
-        </ThumnailSlide>
-        <ThumnailSlide>
+        </ThumbnailSlide>
+        <ThumbnailSlide>
           <Typography
             variant="body2"
             color={theme.palette.secondary.contrastText}
           >
             Sub-systems
           </Typography>
-        </ThumnailSlide>
-        <ThumnailSlide>
+        </ThumbnailSlide>
+        <ThumbnailSlide>
           <Typography
             variant="body2"
             color={theme.palette.secondary.contrastText}
           >
             Customized Solution
           </Typography>
-        </ThumnailSlide>
-      </ThumnailSwiper>
+        </ThumbnailSlide>
+      </ThumbnailSwiper>
       <ContentSwiper
         navigation
         modules={[Controller]}
@@ -64,13 +62,8 @@ export default function MainSlide() {
       >
         <ContentSlide>
           <Grid container>
-            <Grid item xs={6}>
-              {/* <Image
-                layout="fill"
-                alt="img"
-                objectFit="contain"
-                src="/sample_02.png"
-              /> */}
+            <Grid item xs={6} className="img-box">
+              <Image layout="fill" alt="img" src="/sample_02.png" />
             </Grid>
             <Grid item xs={6} className="text-box">
               <Box>
@@ -91,6 +84,7 @@ export default function MainSlide() {
                   <Image
                     alt="img"
                     src="/icon_union_blue.svg"
+                    objectFit="contain"
                     width={44}
                     height={8}
                   />
@@ -101,13 +95,8 @@ export default function MainSlide() {
         </ContentSlide>
         <ContentSlide>
           <Grid container>
-            <Grid item xs={6}>
-              {/* <Image
-                layout="fill"
-                alt="img"
-                objectFit="contain"
-                src="/sample_02.png"
-              /> */}
+            <Grid item xs={6} className="img-box">
+              <Image layout="fill" alt="img" src="/sample_02.png" />
             </Grid>
             <Grid item xs={6} className="text-box">
               <Box>
@@ -128,6 +117,7 @@ export default function MainSlide() {
                   <Image
                     alt="img"
                     src="/icon_union_blue.svg"
+                    objectFit="contain"
                     width={44}
                     height={8}
                   />
@@ -138,13 +128,8 @@ export default function MainSlide() {
         </ContentSlide>
         <ContentSlide>
           <Grid container>
-            <Grid item xs={6}>
-              {/* <Image
-                layout="fill"
-                alt="img"
-                objectFit="contain"
-                src="/sample_02.png"
-              /> */}
+            <Grid item xs={6} className="img-box">
+              <Image layout="fill" alt="img" src="/sample_02.png" />
             </Grid>
             <Grid item xs={6} className="text-box">
               <Box>
@@ -165,6 +150,7 @@ export default function MainSlide() {
                   <Image
                     alt="img"
                     src="/icon_union_blue.svg"
+                    objectFit="contain"
                     width={44}
                     height={8}
                   />
@@ -175,13 +161,8 @@ export default function MainSlide() {
         </ContentSlide>
         <ContentSlide>
           <Grid container>
-            <Grid item xs={6}>
-              {/* <Image
-                layout="fill"
-                alt="img"
-                objectFit="contain"
-                src="/sample_02.png"
-              /> */}
+            <Grid item xs={6} className="img-box">
+              <Image layout="fill" alt="img" src="/sample_02.png" />
             </Grid>
             <Grid item xs={6} className="text-box">
               <Box>
@@ -202,6 +183,7 @@ export default function MainSlide() {
                   <Image
                     alt="img"
                     src="/icon_union_blue.svg"
+                    objectFit="contain"
                     width={44}
                     height={8}
                   />
@@ -214,6 +196,7 @@ export default function MainSlide() {
     </>
   );
 }
+
 const ContentSwiper = styled(Swiper)(({ theme }) => ({
   "& .swiper-button-prev::after,.swiper-button-next::after": {
     content: `""`,
@@ -227,7 +210,13 @@ const ContentSwiper = styled(Swiper)(({ theme }) => ({
     background: `url("/icon_next_gray.svg") center`,
   },
 }));
+
 const ContentSlide = styled(SwiperSlide)(({ theme }) => ({
+  ".img-box": {
+    position: "relative",
+    width: "100%",
+    minHeight: "60rem",
+  },
   ".text-box": {
     padding: "8rem 10rem",
     backgroundColor: theme.palette.secondary.light,
@@ -245,14 +234,15 @@ const ContentSlide = styled(SwiperSlide)(({ theme }) => ({
     color: theme.palette.primary.main,
   },
 }));
-const ThumnailSwiper = styled(Swiper)(({ theme }) => ({
+
+const ThumbnailSwiper = styled(Swiper)(({ theme }) => ({
   margin: "10rem 0 4rem",
   "& .swiper-slide-active p": {
     color: theme.palette.primary.main,
     fontWeight: 600,
   },
 }));
-const ThumnailSlide = styled(SwiperSlide)`
+const ThumbnailSlide = styled(SwiperSlide)`
   position: relative;
   max-width: fit-content;
   padding: 0 3.6rem;

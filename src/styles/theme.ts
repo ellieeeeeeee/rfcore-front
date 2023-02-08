@@ -1,5 +1,15 @@
 import { createTheme } from "@mui/material/styles";
-
+export const breakpointsTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 320,
+      sm: 480,
+      md: 768,
+      lg: 992,
+      xl: 1440,
+    },
+  },
+});
 export const theme = createTheme({
   breakpoints: {
     values: {
@@ -27,6 +37,7 @@ export const theme = createTheme({
       main: "#222", //타이틀
       dark: "#ddd", //라인
       light: "#ccc", //클릭 불가능한 그레이
+      contrastText: "#555", //정보성 text
     },
   },
   components: {
@@ -48,50 +59,53 @@ export const theme = createTheme({
           fontSize: "6rem",
           lineHeight: "9rem",
           fontWeight: 700,
+          [breakpointsTheme.breakpoints.down("md")]: {
+            fontSize: "2.6rem",
+            lineHeight: "3.9rem",
+          },
         },
         h2: {
           fontSize: "5.6rem",
           lineHeight: "8.4rem",
-          fontWeight: 700,
         },
         h3: {
           fontSize: "4rem",
           lineHeight: "6rem",
-          fontWeight: 600,
         },
         subtitle1: {
           fontSize: "2.4rem",
           lineHeight: "4rem",
-          fontWeight: 600,
+          [breakpointsTheme.breakpoints.down("md")]: {
+            fontSize: "1.6rem",
+            lineHeight: "2.4rem",
+          },
         },
         subtitle2: {
-          fontSize: "1.6rem",
+          fontSize: "2rem",
           lineHeight: "2rem",
-          fontWeight: 500,
         },
         body1: {
-          fontSize: "2.4rem",
-          lineHeight: "4rem",
-          fontWeight: 400,
-        },
-        body2: {
           fontSize: "1.8rem",
           lineHeight: "2.8rem",
-          fontWeight: 400,
+          [breakpointsTheme.breakpoints.down("md")]: {
+            fontSize: "1.4rem",
+            lineHeight: "2.6rem",
+          },
+        },
+        body2: {
+          fontSize: "1.6rem",
+          lineHeight: "2.4rem",
+          [breakpointsTheme.breakpoints.down("md")]: {
+            fontSize: "1.2rem",
+            lineHeight: "1.8rem",
+          },
         },
         caption: {
-          fontSize: "1.6rem",
-          lineHeight: "2.4rem",
-          fontWeight: 400,
-        },
-        button: {
-          fontSize: "1.6rem",
-          lineHeight: "2.4rem",
-          fontWeight: 500,
+          fontSize: "1.4rem",
+          lineHeight: "2.1rem",
         },
       },
     },
-    //20 60 24 18 40 32 14 16 28
     MuiButton: {
       defaultProps: {
         disableRipple: true,
