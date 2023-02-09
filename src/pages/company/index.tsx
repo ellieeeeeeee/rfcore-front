@@ -12,33 +12,30 @@ export default function index() {
       <TopBanner
         title="About RFcore"
         subTitle1="Founded in 2000, RFcore Co. Ltd is a global leader in design, develop and manufacture the power amplifier solution for defense, commercial and industrial market application."
-        image
+        image={true}
       />
 
-      <Technology>
+      {/* <Technology>
         <Container maxWidth="xl">
-          <Typography variant="h1" className="border-style">
-            Excellence In
-          </Typography>
-          <Typography variant="h1">RF Technology</Typography>
-
-          <Box className="image-box">
-            {/* <Image
-              layout="fill"
-              src="/company/technology_image.png"
-              alt="img"
-              objectFit="cover"
-            /> */}
-          </Box>
           <Box className="title-box">
-            <Typography variant="body1">
+            <Typography variant="h1" className="border-style">
+              Excellence In
+            </Typography>
+            <Typography variant="h1">RF Technology</Typography>
+          </Box>
+          <Box className="image-box">
+            <img src="/company/technology_image.png" alt="" />
+          </Box>
+
+          <Box className="text-box">
+            <Typography variant="subtitle1">
               Our mission is clear and simple. We constantly innovate ourselves
               with advanced RF technologies. And we offer better solutions to
               our clients.
             </Typography>
           </Box>
         </Container>
-      </Technology>
+      </Technology> */}
       <Core>
         <Container maxWidth="xl">
           <Typography variant="h1">Core Competitiveness</Typography>
@@ -47,47 +44,47 @@ export default function index() {
           </Stack>
         </Container>
       </Core>
-      <Promise>
+      {/* <Promise>
         <Container maxWidth="xl">
           <Typography variant="h1">The Value We Promise</Typography>
-          <Typography variant="body2">
+          <Typography variant="subtitle1">
             RFcore, with a team of the greatest talents in RF technology, is a
-            technology oriented company
-            <br className="inPc" /> born to deliver various cutting edge RF
+            technology oriented company born to deliver various cutting edge RF
             solutions to customers, ranging from High Power Amplifier to MMIC,
-            to Active
-            <br className="inPc" /> Phased Array TRM’s, and to AESA Antenna
-            Solutions. We envision a workplace where extraordinary employees are
-            <br className="inPc" />
-            inspired to drive innovations to customers’ satisfaction.
+            to Active Phased Array TRM’s, and to AESA Antenna Solutions. We
+            envision a workplace where extraordinary employees are inspired to
+            drive innovations to customers’ satisfaction.
           </Typography>
-          <Grid container spacing={5}>
-            <Grid item xs={12} md={6} xl={3}>
+          <Grid container spacing={{ xs: 2.5, xl: 5 }}>
+            <Grid item sm={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">Customer First</Typography>
                 <Typography>text</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} xl={3}>
+            <Grid item sm={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">
-                  Ethical & Fair Business Practices
+                  Ethical & Fair
+                  <br /> Business Practices
                 </Typography>
                 <Typography>text</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} xl={3}>
+            <Grid item sm={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">
-                  Scientific Innovations
+                  Scientific
+                  <br /> Innovations
                 </Typography>
                 <Typography>text</Typography>
               </Box>
             </Grid>
-            <Grid item xs={12} md={6} xl={3}>
+            <Grid item sm={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">
-                  Consistency and sustainability
+                  Consistency
+                  <br /> and sustainability
                 </Typography>
                 <Typography>text</Typography>
               </Box>
@@ -98,85 +95,109 @@ export default function index() {
       <Ci>
         <Container maxWidth="xl">
           <Typography variant="h1">CI Download</Typography>
-          <Grid container className="content" spacing={12.5}>
-            <Grid item xs={12} md={6} className="img-box">
-              <Box>
-                {/* <Image
-                src="/logo_color.png"
-                alt="logo"
-                width={720}
-                height={300}
-              /> */}
-              </Box>
+          <Grid
+            container
+            className="content"
+            columnSpacing={{ xs: 2.5, md: 12.5 }}
+          >
+            <Grid item xs={12} md={6}>
+              <Stack>
+                <Box className="image-box">
+                  <Image src="/logo_color.png" alt="logo" layout="fill" />
+                </Box>
+              </Stack>
             </Grid>
             <Grid item xs={12} md={6} className="download-box">
               <Box>
                 <a download>
                   <Typography variant="body1">PNG Download</Typography>
-                  <Image
-                    src="/company/icon_download.svg"
-                    alt="download"
-                    width={18}
-                    height={25}
-                  />
+                  <Box className="icon-box">
+                    <Image
+                      src="/company/icon_download.svg"
+                      alt="download"
+                      layout="fill"
+                    />
+                  </Box>
                 </a>
                 <a download>
                   <Typography variant="body1">AI Download</Typography>
-                  <Image
-                    src="/company/icon_download.svg"
-                    alt="download"
-                    width={18}
-                    height={25}
-                  />
+                  <Box className="icon-box">
+                    <Image
+                      src="/company/icon_download.svg"
+                      alt="download"
+                      layout="fill"
+                    />
+                  </Box>
                 </a>
               </Box>
             </Grid>
           </Grid>
         </Container>
-      </Ci>
+      </Ci> */}
       <Banner title="R&D Capability" />
     </>
   );
 }
-const Technology = styled(Box)`
-  padding: 160px 0;
-  background: url("/main_bg_02.png") #f4f4f4 no-repeat;
-  background-position: right;
-  & .border-style {
-    position: relative;
-    display: inline-block;
-    max-height: 9rem;
-    z-index: 5;
-    ::after {
-      display: block;
-      position: relative;
-      content: "";
-      width: 100%;
-      height: 25px;
-      background-color: #4393e3;
-      bottom: 3rem;
-      z-index: -1;
-    }
-  }
-  & .image-box {
-    max-width: 1680px;
-  }
-  & .title-box {
-    max-width: 720px;
-    & p {
-      color: #555;
-    }
-  }
-`;
-const Core = styled(Box)(({ theme }) => ({
-  padding: "16rem 0 18rem",
+
+const Technology = styled(Box)(({ theme }) => ({
+  position: "relative",
+  padding: "16rem 0",
+  background: `url("/main_bg_02.png") #f4f4f4 no-repeat`,
+  backgroundPosition: "right",
+  ".title-box": {
+    position: "absolute",
+    marginLeft: "2.6rem",
+    zIndex: 1,
+  },
+  " .border-style": {
+    position: "relative",
+    display: "inline-block",
+    maxHeight: "9rem",
+    "::after": {
+      display: "block",
+      position: "relative",
+      content: `""`,
+      width: "100%",
+      height: "2.5rem",
+      backgroundColor: theme.palette.primary.light,
+      bottom: "3rem",
+      zIndex: -1,
+    },
+  },
+  ".image-box": {
+    position: "relative",
+    width: "100%",
+    height: "60rem",
+    img: {
+      height: "100%",
+    },
+  },
+  ".text-box": {
+    maxWidth: "72rem",
+    marginTop: "4rem",
+    color: theme.palette.info.contrastText,
+  },
 }));
+
+const Core = styled(Box)(({ theme }) => ({
+  padding: "16rem 0",
+  h1: {
+    marginBottom: "10rem",
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+    h1: {
+      marginBottom: "6rem",
+    },
+  },
+}));
+
 const Promise = styled(Box)(({ theme }) => ({
+  padding: "16rem 0",
   color: theme.palette.secondary.light,
   background: `url("/company/promise_image.png")`,
-  padding: "16rem 0",
-  " > div >p": {
-    color: theme.palette.info.dark,
+  " > div > h6": {
+    color: theme.palette.info.light,
     margin: "2rem 0 10rem",
   },
   "& .border-box": {
@@ -186,27 +207,101 @@ const Promise = styled(Box)(({ theme }) => ({
     h6: {
       minHeight: "8rem",
       marginBottom: "2rem",
+      fontWeight: 500,
+    },
+    p: {
+      color: theme.palette.info.light,
+    },
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+    " > div > h6": {
+      margin: "1rem 0 6rem",
+    },
+    "& .border-box": {
+      textAlign: "center",
+      h6: {
+        minHeight: "3.6rem",
+        marginBottom: "1rem",
+        fontSize: "1.2rem",
+        lineHeight: "1.8rem",
+      },
+      p: {
+        fontSize: "1.2rem",
+        lineHeight: "1.4rem",
+      },
     },
   },
 }));
+
 const Ci = styled(Box)(({ theme }) => ({
   padding: "16rem 0",
   ".content": {
     marginTop: "10rem",
   },
-  ".img-box": {
-    " > div": { border: "1px solid #ddd" },
+  ".MuiGrid-item:first-of-type": {
+    "> div": {
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "100%",
+      border: `1px solid ${theme.palette.info.dark}`,
+    },
+    ".image-box": {
+      height: "12.1rem",
+      width: "48rem",
+      img: {
+        objectFit: "contain",
+      },
+    },
   },
   ".download-box": {
     " > div": { borderTop: "1px solid #ddd", borderBottom: "1px solid #ddd" },
-
     a: {
       display: "flex",
       padding: "5.7rem 4.2rem 5.7rem 0",
       justifyContent: "space-between",
-
-      ":first-child": {
+      alignItems: "center",
+      ":first-of-type": {
         borderBottom: "1px solid #ddd",
+      },
+      p: {
+        fontWeight: 500,
+      },
+    },
+    ".icon-box": {
+      width: "1.8rem",
+      height: "2.6rem",
+    },
+  },
+  //   [theme.breakpoints.down("lg")]: {
+  //     ".MuiGrid-item:first-of-type> div": {
+  //       ".image-box": {
+  //         height: "8rem",
+  //         width: "36rem",
+  //       },
+  //     },
+  //   },
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+    ".content": {
+      marginTop: "6rem",
+    },
+    ".MuiGrid-item:first-of-type> div": {
+      padding: "12rem 4rem",
+      ".image-box": {
+        height: "6rem",
+        width: "24rem",
+      },
+    },
+    ".download-box": {
+      marginTop: "4rem",
+      a: {
+        padding: "2rem",
+      },
+      ".icon-box": {
+        width: "1.3rem",
+        height: "1.8rem",
       },
     },
   },

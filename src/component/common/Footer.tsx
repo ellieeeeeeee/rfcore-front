@@ -12,7 +12,7 @@ export default function Footer() {
               <Image src="/logo_black.png" alt="logo" width={147} height={36} />
             </Box>
           </Grid>
-          <Grid item xs={12} lg={6} className="item">
+          <Grid item xs={12} lg={5.5} className="item">
             <Typography variant="subtitle1">HEAD OFFICE</Typography>
 
             <Item direction="row">
@@ -37,7 +37,7 @@ export default function Footer() {
               </Text>
             </Item>
           </Grid>
-          <Grid item xs={12} lg={3.5} className="item">
+          <Grid item xs={12} lg={4} className="item">
             <Typography variant="subtitle1">SUPPORT</Typography>
             <Item direction="row">
               <Title variant="body2">General inquirles</Title>
@@ -85,7 +85,7 @@ const FooterBox = styled(Box)(({ theme }) => ({
     ".MuiGrid-item": {
       paddingTop: "2rem",
     },
-    ".MuiGrid-item:first-child": {
+    ".MuiGrid-item:first-of-type": {
       display: "none",
     },
     ".item": {

@@ -2,22 +2,22 @@ import { createTheme } from "@mui/material/styles";
 export const breakpointsTheme = createTheme({
   breakpoints: {
     values: {
-      xs: 320,
+      xs: 0,
       sm: 480,
-      md: 768,
-      lg: 992,
-      xl: 1440,
+      md: 900,
+      lg: 1200, //1200이상 적용
+      xl: 1488,
     },
   },
 });
 export const theme = createTheme({
   breakpoints: {
     values: {
-      xs: 320,
+      xs: 0,
       sm: 480,
-      md: 768,
-      lg: 992,
-      xl: 1440,
+      md: 900,
+      lg: 1200,
+      xl: 1488,
     },
   },
   palette: {
@@ -71,6 +71,10 @@ export const theme = createTheme({
         h3: {
           fontSize: "4rem",
           lineHeight: "6rem",
+          [breakpointsTheme.breakpoints.down("md")]: {
+            fontSize: "2.2rem",
+            lineHeight: "3.3rem",
+          },
         },
         subtitle1: {
           fontSize: "2.4rem",

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import router, { useRouter } from "next/router";
-import { Container, Link, Stack, styled } from "@mui/material";
+import { Box, Container, Link, Stack, styled, Typography } from "@mui/material";
 
 import HamburgerNav from "./HamburgerNav";
 
@@ -54,8 +54,19 @@ export default function Header() {
   const [navOpen, setNavOpen] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const pathName = useRouter().pathname;
-  const pathRoute = pathName.split("/")[1];
+  const pathHref = navItem.map((item) => item.href);
 
+  //   const pathRoute = pathName.split("/")[1];
+
+  //header inner hover
+  const [innerLnb, setInnerLnb] = useState<any>({});
+  const handleMouseOver = (item: any) => {
+    const lnbItem = navItem.filter((lnb) => lnb.name === item.name);
+    setInnerLnb(lnbItem[0]);
+  };
+
+  const test = pathHref.filter((item) => item === innerLnb.href);
+  console.log("test", String(test) === innerLnb.href && console.log("같음"));
   return (
     <>
       <Container maxWidth="xl">
@@ -82,11 +93,17 @@ export default function Header() {
           >
             {navItem &&
               navItem.map((item) => (
-                <Link key={item.id} href={item.href} variant="subtitle2">
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  variant="subtitle2"
+                  onMouseOver={() => handleMouseOver(item)}
+                >
                   {item.name}
                 </Link>
               ))}
           </Stack>
+
           <Stack
             className="hamburger inMobile"
             onClick={() => setNavOpen(true)}
@@ -99,6 +116,20 @@ export default function Header() {
             />
           </Stack>
         </HeaderBox>
+        <HeaderInner>
+          <Typography className="title">{innerLnb?.name}</Typography>
+          {innerLnb.lnb &&
+            innerLnb.lnb.map((item: any) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                variant="subtitle2"
+                className={String(test) === innerLnb.href ? "active" : ""}
+              >
+                {item.name}
+              </Link>
+            ))}
+        </HeaderInner>
         {navOpen && (
           <HamburgerNav
             isOpen={navOpen}
@@ -131,14 +162,28 @@ const HeaderBox = styled(Stack)(({ theme }) => ({
     },
   },
 }));
-// const Item = styled(Box)(({ theme }) => ({}));
-const Lnb = styled(Stack)(({ theme }) => ({
+const HeaderInner = styled(Box)(({ theme }) => ({
   padding: "6rem 0",
   " .title": {
     fontSize: "4.8rem",
     fontWeight: 600,
     lineHeight: "7.2rem",
+    marginBottom: "2rem",
   },
+  a: {
+    fontSize: "2rem",
+    lineHeight: "3rem",
+    fontWeight: 500,
+    color: theme.palette.info.main,
+    marginRight: " 4rem",
+  },
+  "a.active": {
+    color: theme.palette.primary.main,
+  },
+}));
+const Lnb = styled(Stack)(({ theme }) => ({
+  padding: "6rem 0",
+
   " .lnb-list": {
     flexDirection: "row",
 

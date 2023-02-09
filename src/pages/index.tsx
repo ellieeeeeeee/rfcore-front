@@ -46,7 +46,7 @@ export default function Home() {
               <Typography variant="caption">
                 Simple explanation on related applications
               </Typography>
-              <Box className="img-box">
+              <Box className="image-box">
                 <Image src="/sample_m.png" alt="" layout="fill"></Image>
               </Box>
             </Item>
@@ -55,7 +55,7 @@ export default function Home() {
               <Typography variant="caption">
                 Simple explanation on related applications
               </Typography>
-              <Box className="img-box">
+              <Box className="image-box">
                 <Image src="/sample_m.png" alt="" layout="fill"></Image>
               </Box>
             </Item>
@@ -66,7 +66,7 @@ export default function Home() {
               <Typography variant="caption">
                 Simple explanation on related applications
               </Typography>
-              <Box className="img-box">
+              <Box className="image-box">
                 <Image src="/sample_m.png" alt="" layout="fill"></Image>
               </Box>
             </Item>
@@ -145,6 +145,10 @@ export default function Home() {
 }
 const ProductBox = styled(Box)(({ theme }) => ({
   padding: "16rem 0",
+  background: "#f4f4f4",
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+  },
 }));
 const ApplicationsBox = styled(Box)(({ theme }) => ({
   padding: "16rem 0",
@@ -155,7 +159,7 @@ const ApplicationsBox = styled(Box)(({ theme }) => ({
     margin: "2rem 0 10rem",
   },
   ".bottom-text": {
-    "p:first-child": {
+    "p:first-of-type": {
       fontSize: "3.2rem",
       fontWeight: 600,
       lineHeight: "4.8rem",
@@ -182,8 +186,7 @@ const ApplicationsBox = styled(Box)(({ theme }) => ({
 //모바일
 const Item = styled(Box)(({ theme }) => ({
   textAlign: "center",
-  " .img-box": {
-    position: "relative",
+  " .image-box": {
     width: "100%",
     minHeight: "32rem",
   },
@@ -251,7 +254,7 @@ const SubText = styled(Box)`
     line-height: 1.6rem;
     color: #555;
   }
-  & p:first-child {
+  & p:first-of-type {
     position: relative;
     display: inline-block;
     padding-right: 10px;
@@ -259,7 +262,7 @@ const SubText = styled(Box)`
   & p:last-child {
     padding-left: 10px;
   }
-  & p:first-child::after {
+  & p:first-of-type::after {
     position: absolute;
     content: "";
     display: block;

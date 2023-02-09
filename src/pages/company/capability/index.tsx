@@ -23,7 +23,7 @@ export default function index() {
               <Typography variant="body2" className="sub-title">
                 With active cooperation to provide high-quality solutions
               </Typography>
-              <Stack className="img-box">
+              <Stack className="image-box">
                 <Image
                   src="/company/icon_union_blue.svg"
                   alt="arrow"
@@ -56,7 +56,7 @@ const Global = styled(Box)(({ theme }) => ({
       color: theme.palette.secondary.contrastText,
       marginBottom: "8rem",
     },
-    ".img-box": {
+    ".image-box": {
       justifyContent: "center",
     },
   },

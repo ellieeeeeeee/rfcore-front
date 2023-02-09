@@ -7,12 +7,9 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import Image, { ImageProps } from "next/image";
-import { subtle } from "crypto";
-import { transform } from "typescript";
 
 interface Props {
-  image?: boolean;
+  image: boolean;
   title?: string;
   subTitle1?: string;
   subTitle2?: any;
@@ -29,17 +26,15 @@ export default function TopBanner({
   buttonTxt2,
 }: Props) {
   return (
-    <BannerBox image>
+    <BannerBox hasImage={image}>
       <Container maxWidth="xl">
         {/* TODO: 카테고리 들어갈 영역 만들기(상품 하위 카테고리) */}
-        <Typography variant="h2" sx={{ mb: "2rem" }}>
-          {title}
-        </Typography>
+        <Typography variant="h1">{title}</Typography>
         <Grid container className="banner-text">
           <Grid item className={subTitle1 ? "title" : "title-list"}>
             {subTitle2 &&
               subTitle2.map((item: any) => (
-                <Typography variant="body2" key={item}>
+                <Typography variant="subtitle1" key={item}>
                   {item}
                 </Typography>
               ))}
@@ -65,29 +60,29 @@ export default function TopBanner({
   );
 }
 interface BgStyleProps {
-  image: boolean;
+  hasImage: boolean;
 }
 const BannerBox = styled(Box, {
-  shouldForwardProp: (prop) => prop !== "image",
-})<BgStyleProps>(({ image, theme }) => ({
+  shouldForwardProp: (prop) => prop !== "hasImage",
+})<BgStyleProps>(({ hasImage, theme }) => ({
   padding: `6rem 0`,
-  ...(image === true
+  ...(hasImage === true
     ? { background: `url("/banner_bg_01.png")` }
     : { background: `url("/banner_bg_02.png") #F6F6F6 center` }),
-  "& h2": {
+  "& h1": {
+    fontWeight: 700,
     marginBottom: "2rem",
-    ...(image === true
+    ...(hasImage === true
       ? { color: theme.palette.secondary.light }
       : { color: theme.palette.info.main }),
   },
   "& .banner-text": {
-    //color: theme.palette.secondary.contrastText,
     alignItems: "center",
     justifyContent: "space-between",
     "& .title p": {
-      ...(image === true
+      ...(hasImage === true
         ? { color: theme.palette.info.light }
-        : { color: theme.palette.secondary.contrastText }),
+        : { color: theme.palette.info.contrastText }),
     },
     "& .title-list": {
       display: "flex",
@@ -106,7 +101,7 @@ const BannerBox = styled(Box, {
         transform: "translateY(-50%)",
         background: "#ccc",
       },
-      "& p:first-child": {
+      "& p:first-of-type": {
         paddingLeft: 0,
       },
     },
@@ -114,10 +109,14 @@ const BannerBox = styled(Box, {
       "& button": {
         padding: "1.3rem 3.6rem",
       },
-      "& > div:first-child": {
+      "& > div:first-of-type": {
         marginRight: "2rem",
       },
     },
   },
   "& .button-group": {},
+  [theme.breakpoints.down("md")]: {
+    padding: "4rem 0 10rem",
+    maxHeight: "27.2rem",
+  },
 }));
