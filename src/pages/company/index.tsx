@@ -15,7 +15,7 @@ export default function index() {
         image={true}
       />
 
-      {/* <Technology>
+      <Technology>
         <Container maxWidth="xl">
           <Box className="title-box">
             <Typography variant="h1" className="border-style">
@@ -24,7 +24,8 @@ export default function index() {
             <Typography variant="h1">RF Technology</Typography>
           </Box>
           <Box className="image-box">
-            <img src="/company/technology_image.png" alt="" />
+            {/* TODO: next/image로 변경 후 사이즈 조절 */}
+            <img src="/company/technology_image.png" alt="technology" />
           </Box>
 
           <Box className="text-box">
@@ -35,7 +36,7 @@ export default function index() {
             </Typography>
           </Box>
         </Container>
-      </Technology> */}
+      </Technology>
       <Core>
         <Container maxWidth="xl">
           <Typography variant="h1">Core Competitiveness</Typography>
@@ -44,7 +45,7 @@ export default function index() {
           </Stack>
         </Container>
       </Core>
-      {/* <Promise>
+      <Promise>
         <Container maxWidth="xl">
           <Typography variant="h1">The Value We Promise</Typography>
           <Typography variant="subtitle1">
@@ -133,7 +134,7 @@ export default function index() {
             </Grid>
           </Grid>
         </Container>
-      </Ci> */}
+      </Ci>
       <Banner title="R&D Capability" />
     </>
   );
@@ -141,12 +142,13 @@ export default function index() {
 
 const Technology = styled(Box)(({ theme }) => ({
   position: "relative",
+  overflow: "hidden",
   padding: "16rem 0",
   background: `url("/main_bg_02.png") #f4f4f4 no-repeat`,
   backgroundPosition: "right",
   ".title-box": {
     position: "absolute",
-    marginLeft: "2.6rem",
+    margin: "-14.5rem 0  0 2.6rem",
     zIndex: 1,
   },
   " .border-style": {
@@ -167,7 +169,9 @@ const Technology = styled(Box)(({ theme }) => ({
   ".image-box": {
     position: "relative",
     width: "100%",
-    height: "60rem",
+    minWidth: "167.1rem",
+    height: "auto",
+    marginTop: "12rem",
     img: {
       height: "100%",
     },
@@ -176,6 +180,30 @@ const Technology = styled(Box)(({ theme }) => ({
     maxWidth: "72rem",
     marginTop: "4rem",
     color: theme.palette.info.contrastText,
+  },
+
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+    backgroundPosition: "bottom",
+    backgroundSize: "contain",
+    ".title-box": {
+      margin: "-6.3rem  0 0",
+    },
+    " .border-style": {
+      maxHeight: "4rem",
+      "::after": {
+        height: "1.2rem",
+        bottom: "1.6rem",
+      },
+    },
+    ".image-box": {
+      marginTop: "4.8rem",
+    },
+    ".text-box": {
+      fontSize: "1.4rem",
+      lineHeight: "2.6rem",
+      marginTop: "2rem",
+    },
   },
 }));
 
@@ -195,7 +223,8 @@ const Core = styled(Box)(({ theme }) => ({
 const Promise = styled(Box)(({ theme }) => ({
   padding: "16rem 0",
   color: theme.palette.secondary.light,
-  background: `url("/company/promise_image.png")`,
+  background: `url("/company/promise_image.png") no-repeat`,
+  backgroundSize: "cover",
   " > div > h6": {
     color: theme.palette.info.light,
     margin: "2rem 0 10rem",

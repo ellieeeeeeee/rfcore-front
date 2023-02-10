@@ -1,4 +1,4 @@
-import Slide from "@/component/applications/Slide";
+import Slide from "@/component/ApplicationSlide";
 import Image from "next/legacy/image";
 import {
   Box,
