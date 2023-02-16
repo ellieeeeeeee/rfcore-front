@@ -5,17 +5,43 @@ import React, { useState } from "react";
 import Image from "next/legacy/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
-
-import Banner from "@/component/common/Banner";
-
 //swiper css
 import "swiper/css";
 import "swiper/css/navigation";
 
+import Banner from "@/component/common/Banner";
+
 export default function Capability() {
   SwiperCore.use([Navigation]);
+  const globalContent = [
+    {
+      id: 1,
+      title: "eliable Service",
+      pointTitle: "R",
+      description: " With active cooperation to provide high-quality solutions",
+    },
+    {
+      id: 2,
+      title: "orefront Technology",
+      pointTitle: "F",
+      description:
+        " Continuous innovation with the best and first technology in the RF field",
+    },
+    {
+      id: 3,
+      title: "tech Application",
+      pointTitle: "Core",
+      description:
+        "Various application from single products to whole systems covering defense and civilian",
+    },
+  ];
   const [isHovering, setIsHovering] = useState(false);
-
+  const handleHoverEvent = (id: number) => {
+    const hoverItem = globalContent.filter((item) => item.id === id);
+    setIsHovering(true);
+    console.log("id", id);
+    console.log("hoverItem", hoverItem);
+  };
   return (
     <>
       <TopBanner
@@ -27,68 +53,30 @@ export default function Capability() {
         <Container maxWidth="xl">
           <Typography variant="h1">Global Top-Tier Partner, RF core</Typography>
           <Grid container columnSpacing={2.5}>
-            <Item
-              item
-              xs={12}
-              md={4}
-              onMouse={isHovering}
-              onMouseOver={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              <Box className="item">
-                <Typography variant="body1" className="title">
-                  <span>R</span>eliable Service
-                </Typography>
-                <Typography variant="body2" className="sub-title">
-                  With active cooperation to provide high-quality solutions
-                </Typography>
-                <Box className="image-box">
-                  <Box className="icon-box"></Box>
+            {globalContent.map((item) => (
+              <Item
+                item
+                xs={12}
+                lg={4}
+                onMouse={isHovering}
+                onMouseOver={() => handleHoverEvent(item.id)}
+                onMouseLeave={() => setIsHovering(false)}
+                key={item.id}
+              >
+                <Box className="item">
+                  <Typography variant="body1" className="title">
+                    <span>{item.pointTitle}</span>
+                    {item.title}
+                  </Typography>
+                  <Typography variant="body2" className="sub-title">
+                    {item.description}
+                  </Typography>
+                  <Box className="image-box">
+                    <Box className="icon-box"></Box>
+                  </Box>
                 </Box>
-              </Box>
-            </Item>
-            <Item
-              item
-              xs={12}
-              md={4}
-              onMouse={isHovering}
-              onMouseOver={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              <Box className="item">
-                <Typography variant="body1" className="title">
-                  <span>F</span>orefront Technology
-                </Typography>
-                <Typography variant="body2" className="sub-title">
-                  Continuous innovation with the best and first technology in
-                  the RF field
-                </Typography>
-                <Box className="image-box">
-                  <Box className="icon-box"></Box>
-                </Box>
-              </Box>
-            </Item>
-            <Item
-              item
-              xs={12}
-              md={4}
-              onMouse={isHovering}
-              onMouseOver={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              <Box className="item">
-                <Typography variant="body1" className="title">
-                  <span className="yellow">Core</span>tech Application
-                </Typography>
-                <Typography variant="body2" className="sub-title">
-                  Various application from single products to whole systems
-                  covering defense and civilian
-                </Typography>
-                <Box className="image-box">
-                  <Box className="icon-box"></Box>
-                </Box>
-              </Box>
-            </Item>
+              </Item>
+            ))}
           </Grid>
         </Container>
       </Global>
@@ -140,7 +128,27 @@ export default function Capability() {
       <Certificates>
         <Container maxWidth="xl">
           <Typography variant="h1">Global Certificates </Typography>
-          <StyledSwiper slidesPerView={4} navigation spaceBetween={40}>
+          <StyledSwiper
+            slidesPerView={4}
+            navigation
+            breakpoints={{
+              320: {
+                slidesPerView: 1.5,
+                centeredSlides: true,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                centeredSlides: false,
+                spaceBetween: 40,
+              },
+              1200: {
+                slidesPerView: 4,
+                centeredSlides: false,
+                spaceBetween: 40,
+              },
+            }}
+          >
             <StyledSwiperSlide>
               <Box className="image-box">
                 <Image
@@ -148,8 +156,9 @@ export default function Capability() {
                   objectFit="contain"
                   src="/company/certificates_image_01.png"
                   alt="capability"
-                ></Image>
+                />
               </Box>
+              <Typography variant="subtitle1">ISO 9001</Typography>
             </StyledSwiperSlide>
             <StyledSwiperSlide>
               <Box className="image-box">
@@ -158,8 +167,9 @@ export default function Capability() {
                   objectFit="contain"
                   src="/company/certificates_image_01.png"
                   alt="capability"
-                ></Image>
+                />
               </Box>
+              <Typography variant="subtitle1">ISO 14001</Typography>
             </StyledSwiperSlide>
             <StyledSwiperSlide>
               <Box className="image-box">
@@ -168,8 +178,9 @@ export default function Capability() {
                   objectFit="contain"
                   src="/company/certificates_image_02.png"
                   alt="capability"
-                ></Image>
+                />{" "}
               </Box>
+              <Typography variant="subtitle1">AS 9100</Typography>
             </StyledSwiperSlide>
             <StyledSwiperSlide>
               <Box className="image-box">
@@ -178,8 +189,9 @@ export default function Capability() {
                   objectFit="contain"
                   src="/company/certificates_image_03.png"
                   alt="capability"
-                ></Image>
+                />
               </Box>
+              <Typography variant="subtitle1">KS Q 9100</Typography>
             </StyledSwiperSlide>
             <StyledSwiperSlide>
               <Box className="image-box">
@@ -188,12 +200,19 @@ export default function Capability() {
                   objectFit="contain"
                   src="/company/certificates_image_02.png"
                   alt="capability"
-                ></Image>
+                />
               </Box>
+              <Typography variant="subtitle1">AS 9100</Typography>
             </StyledSwiperSlide>
           </StyledSwiper>
         </Container>
       </Certificates>
+      <Partners>
+        <Container maxWidth="xl">
+          <Typography variant="h1">Global Partners</Typography>
+          <Box className="map-area"></Box>
+        </Container>
+      </Partners>
       <Banner title="History of Excellence !" />
     </>
   );
@@ -225,6 +244,13 @@ const Global = styled(Box)(({ theme }) => ({
 const Item = styled(Grid, {
   shouldForwardProp: (prop) => prop !== "onMouse",
 })<hoverStyleProps>(({ onMouse, theme }) => ({
+  ":nth-of-type(3)": {
+    span: {
+      ...(onMouse === true
+        ? { color: "#FEBC08 !important" }
+        : { color: theme.palette.info.contrastText }),
+    },
+  },
   ".item": {
     backgroundColor: " #EEF4FA",
     padding: "4rem 2rem 0",
@@ -238,13 +264,6 @@ const Item = styled(Grid, {
         ...(onMouse === true
           ? {
               color: theme.palette.primary.light,
-            }
-          : { color: theme.palette.info.contrastText }),
-      },
-      "& span.yellow": {
-        ...(onMouse === true
-          ? {
-              color: "#FEBC08",
             }
           : { color: theme.palette.info.contrastText }),
       },
@@ -278,7 +297,7 @@ const Item = styled(Grid, {
         : { background: `url("/company/icon_union_blue.svg") no-repeat` }),
     },
   },
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("lg")]: {
     ":not(:last-child)": { marginBottom: "4rem" },
     ".item": {
       ".title": {
@@ -373,13 +392,84 @@ const Technology = styled(Box)(({ theme }) => ({
   },
 }));
 const Certificates = styled(Box)(({ theme }) => ({
-  padding: "16rem 0",
+  padding: "16rem 0 8rem",
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+    " > div": {
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
+    h1: {
+      paddingLeft: "2.4rem",
+      paddingRight: "2.4rem",
+    },
+  },
 }));
-const StyledSwiper = styled(Swiper)`
-  margin-top: 10rem;
-`;
-const StyledSwiperSlide = styled(SwiperSlide)`
-  .image-box {
-    height: 46.4rem;
-  }
-`;
+
+const StyledSwiper = styled(Swiper)(({ theme }) => ({
+  marginTop: "10rem",
+  paddingBottom: "15.6rem !important",
+  ".swiper-button-prev,  .swiper-button-next ": {
+    width: "5rem",
+    height: "5rem",
+    border: "1px solid #555",
+    top: "auto",
+    bottom: 0,
+  },
+  ".swiper-button-prev": {
+    left: "46.6%",
+  },
+  ".swiper-button-next ": {
+    left: "50%",
+  },
+  ".swiper-button-disabled": {
+    border: `1px solid ${theme.palette.info.light}`,
+  },
+  ".swiper-button-prev::after,   .swiper-button-next::after": {
+    content: `""`,
+    width: "1rem",
+    height: "2rem",
+  },
+  ".swiper-button-prev::after": {
+    background: `url("/icon_prev_gray.svg") center no-repeat`,
+    backgroundSize: "1rem 2rem",
+  },
+  ".swiper-button-next::after": {
+    background: `url("/icon_next_gray.svg") center no-repeat`,
+    backgroundSize: "1rem 2rem",
+  },
+  [theme.breakpoints.down("md")]: {
+    margin: "6rem -2.4rem 0",
+    paddingBottom: "0 !important",
+    ".swiper-button-prev,   .swiper-button-next": {
+      display: "none",
+    },
+  },
+}));
+const StyledSwiperSlide = styled(SwiperSlide)(({ theme }) => ({
+  ".image-box": {
+    height: "46.4rem",
+  },
+  h6: {
+    textAlign: "center",
+    marginTop: "4rem",
+    fontWeight: 500,
+    color: theme.palette.info.contrastText,
+  },
+  [theme.breakpoints.down("md")]: {
+    h6: {
+      marginTop: "2rem",
+      fontSize: "1.4rem",
+    },
+  },
+}));
+const Partners = styled(Box)(({ theme }) => ({
+  padding: "16rem 0",
+  backgroundColor: "#f4f4f4",
+  ".map-area": {
+    background: `url("/company/map_image.png") bottom no-repeat`,
+    paddingTop: "42%",
+    backgroundSize: "contain",
+    // height: "70rem",
+  },
+}));
