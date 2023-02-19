@@ -10,8 +10,6 @@ interface Props {
   navItem: any;
 }
 export default function HamburgerNav({ isOpen, onClose, navItem }: Props) {
-  console.log("navItem", navItem);
-
   return (
     <Nav>
       <Stack direction="row" className="header-box">
@@ -77,6 +75,9 @@ const Nav = styled(Stack)(({ theme }) => ({
   ".logo-box": {
     maxWidth: "8.9rem",
     height: "2.2rem",
+  },
+  [theme.breakpoints.down("lg")]: {
+    display: "none",
   },
 }));
 const NavBox = styled(Box)(({ theme }) => ({

@@ -103,7 +103,9 @@ export default function Header() {
 
           <Stack
             className="hamburger inMobile"
-            onClick={() => setNavOpen(true)}
+            onClick={() => {
+              setNavOpen(true), console.log("open");
+            }}
           >
             <Image
               src="/icon_hamburger.svg"
