@@ -76,9 +76,6 @@ const Nav = styled(Stack)(({ theme }) => ({
     maxWidth: "8.9rem",
     height: "2.2rem",
   },
-  [theme.breakpoints.down("lg")]: {
-    display: "none",
-  },
 }));
 const NavBox = styled(Box)(({ theme }) => ({
   marginTop: "2rem",

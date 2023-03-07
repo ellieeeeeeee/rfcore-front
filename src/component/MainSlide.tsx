@@ -14,6 +14,7 @@ export default function MainSlide() {
 
   return (
     <>
+      {/* TODO: image 나오면 버튼이랑 비율 수정, slide controller 작업 */}
       <ThumbnailSwiper
         slidesPerView={4}
         navigation
@@ -63,7 +64,12 @@ export default function MainSlide() {
         <ContentSlide>
           <Grid container>
             <Grid item xs={12} lg={6} className="image-box">
-              <Image layout="fill" alt="img" src="/sample_02.png" />
+              <Image
+                layout="fill"
+                alt="img"
+                src="/main/sample_02.png"
+                className="pc"
+              />
             </Grid>
             <Grid item xs={12} lg={6} className="text-box">
               <Box>

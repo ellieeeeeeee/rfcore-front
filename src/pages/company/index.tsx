@@ -57,13 +57,13 @@ export default function index() {
             drive innovations to customers’ satisfaction.
           </Typography>
           <Grid container spacing={{ xs: 2.5, xl: 5 }}>
-            <Grid item sm={6} xl={3}>
+            <Grid item xs={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">Customer First</Typography>
                 <Typography>text</Typography>
               </Box>
             </Grid>
-            <Grid item sm={6} xl={3}>
+            <Grid item xs={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">
                   Ethical & Fair
@@ -72,7 +72,7 @@ export default function index() {
                 <Typography>text</Typography>
               </Box>
             </Grid>
-            <Grid item sm={6} xl={3}>
+            <Grid item xs={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">
                   Scientific
@@ -81,7 +81,7 @@ export default function index() {
                 <Typography>text</Typography>
               </Box>
             </Grid>
-            <Grid item sm={6} xl={3}>
+            <Grid item xs={6} xl={3}>
               <Box className="border-box">
                 <Typography variant="subtitle1">
                   Consistency
@@ -249,6 +249,7 @@ const Promise = styled(Box)(({ theme }) => ({
     },
     "& .border-box": {
       textAlign: "center",
+      padding: "4rem 2rem",
       h6: {
         minHeight: "3.6rem",
         marginBottom: "1rem",

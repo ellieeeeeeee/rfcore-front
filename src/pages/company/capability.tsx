@@ -1,5 +1,15 @@
 import TopBanner from "@/component/common/TopBanner";
-import { Box, Grid, Stack, styled, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  styled,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import { Container } from "@mui/system";
 import React, { useState } from "react";
 import Image from "next/legacy/image";
@@ -10,9 +20,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 import Banner from "@/component/common/Banner";
+import CompanyBox from "@/component/company/CompanyBox";
 
 export default function Capability() {
-  SwiperCore.use([Navigation]);
   const globalContent = [
     {
       id: 1,
@@ -39,9 +49,8 @@ export default function Capability() {
   const handleHoverEvent = (id: number) => {
     const hoverItem = globalContent.filter((item) => item.id === id);
     setIsHovering(true);
-    console.log("id", id);
-    console.log("hoverItem", hoverItem);
   };
+  SwiperCore.use([Navigation]);
   return (
     <>
       <TopBanner
@@ -49,6 +58,77 @@ export default function Capability() {
         subTitle1="RFcore provides optimized solutions, enhancing the value of our customers"
         image
       />
+      <Realization>
+        <Container maxWidth="xl">
+          <Typography variant="h1">
+            World&apos;s First Multi-Channel Realization with CMOS
+          </Typography>
+          <Grid
+            container
+            columnSpacing={{ xs: 0, lg: 5 }}
+            rowSpacing={{ xs: 5, lg: 0 }}
+          >
+            <Grid item xs={12} lg={7}>
+              <Table>
+                <colgroup>
+                  <col width="20%"></col>
+                  <col width="32%"></col>
+                  <col width=""></col>
+                </colgroup>
+                <TableHead>
+                  <TableCell component="th"></TableCell>
+                  <TableCell component="th" className="default">
+                    Conventional
+                    <br /> 4ch X-Band TRM
+                  </TableCell>
+                  <TableCell component="th" className="active">
+                    New Tile type
+                    <br /> 4ch X-Band TRM
+                  </TableCell>
+                </TableHead>
+                <TableBody>
+                  <TableRow>
+                    <TableCell component="th">Size(mm)</TableCell>
+                    <TableCell component="td" className="default">
+                      150X78
+                    </TableCell>
+                    <TableCell component="td" className="active">
+                      40X40
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell component="th">
+                      Number
+                      <br /> of chips
+                    </TableCell>
+                    <TableCell component="td" className="default">
+                      64 chips and 1380 bonding wires (Many GaAs MMICs &
+                      Assembly)
+                    </TableCell>
+                    <TableCell component="td" className="active">
+                      5 chips
+                      <br />
+                      <span>
+                        (One 4ch CMOS
+                        <br /> core chip + Four GanN BDAs)
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </Grid>
+            <Grid item xs={12} lg={5}>
+              <Box className="image-box">
+                <Image
+                  layout="fill"
+                  src="/company/realization_image.png"
+                  alt="image"
+                />
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Realization>
       <Global>
         <Container maxWidth="xl">
           <Typography variant="h1">Global Top-Tier Partner, RF core</Typography>
@@ -59,8 +139,8 @@ export default function Capability() {
                 xs={12}
                 lg={4}
                 onMouse={isHovering}
-                onMouseOver={() => handleHoverEvent(item.id)}
-                onMouseLeave={() => setIsHovering(false)}
+                // onMouseOver={() => handleHoverEvent(item.id)}
+                // onMouseLeave={() => setIsHovering(false)}
                 key={item.id}
               >
                 <Box className="item">
@@ -210,7 +290,42 @@ export default function Capability() {
       <Partners>
         <Container maxWidth="xl">
           <Typography variant="h1">Global Partners</Typography>
-          <Box className="map-area"></Box>
+          <Box className="map-area">
+            <PointerBox className="pointer pointer_01">
+              <CompanyBox title="United Kingdom" subTitle="RF Channel" />
+            </PointerBox>
+            <PointerBox className="pointer pointer_02">
+              <Box className="pointer " />
+              <CompanyBox title="Spain" subTitle="Milexia" />
+            </PointerBox>
+            <PointerBox className="pointer pointer_03">
+              <Box className="pointer " />
+              <CompanyBox title="France" subTitle="FH Microwave" />
+            </PointerBox>
+            <PointerBox className="pointer pointer_04">
+              <Box className="pointer " />
+              <CompanyBox title="Rumania" subTitle="Tejas Development SRL" />
+            </PointerBox>
+            {/* <PointerBox className="pointer pointer_05">
+              <Box className="pointer " />
+              <CompanyBox title="Turkey" subTitle="AKZ" />
+            </PointerBox> */}
+            <PointerBox className="pointer pointer_06">
+              <Box className="pointer " />
+              <CompanyBox
+                title="Israel"
+                subTitle="Mifne Focus Management Solutions Ltd."
+              />
+            </PointerBox>
+            <PointerBox className="pointer pointer_07">
+              <Box className="pointer " />
+              <CompanyBox title="India" subTitle="APC Technologies" />
+            </PointerBox>
+            <PointerBox className="pointer pointer_08">
+              <Box className="pointer " />
+              <CompanyBox title="Russia" subTitle="Prochip" />
+            </PointerBox>
+          </Box>
         </Container>
       </Partners>
       <Banner title="History of Excellence !" />
@@ -244,28 +359,16 @@ const Global = styled(Box)(({ theme }) => ({
 const Item = styled(Grid, {
   shouldForwardProp: (prop) => prop !== "onMouse",
 })<hoverStyleProps>(({ onMouse, theme }) => ({
-  ":nth-of-type(3)": {
-    span: {
-      ...(onMouse === true
-        ? { color: "#FEBC08 !important" }
-        : { color: theme.palette.info.contrastText }),
-    },
-  },
   ".item": {
     backgroundColor: " #EEF4FA",
     padding: "4rem 2rem 0",
     ".title": {
-      color: theme.palette.info.contrastText,
       fontWeight: 500,
+      color: theme.palette.info.contrastText,
       "& span": {
         fontSize: "4.8rem",
         lineHeight: "7.2rem",
         fontWeight: 700,
-        ...(onMouse === true
-          ? {
-              color: theme.palette.primary.light,
-            }
-          : { color: theme.palette.info.contrastText }),
       },
     },
     ".sub-title": {
@@ -277,36 +380,56 @@ const Item = styled(Grid, {
       transition: "all 0.3s",
       padding: "6.2rem 0 4.2rem",
       margin: "0 -2rem",
-      ...(onMouse === true
-        ? {
-            background: `url("/company/partner_image.png") no-repeat`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }
-        : { background: "none" }),
+      background: "none",
     },
     ".icon-box": {
       width: "1.5rem",
       height: "4.2rem",
       backgroundPosition: "center",
       margin: "0 auto",
-      ...(onMouse === true
-        ? {
-            background: `url("/company/icon_union_white.svg") no-repeat`,
-          }
-        : { background: `url("/company/icon_union_blue.svg") no-repeat` }),
+      background: `url("/company/icon_union_blue.svg") no-repeat`,
+    },
+  },
+  ":nth-of-type(1):hover, :nth-of-type(2):hover": {
+    p: {
+      color: theme.palette.info.main,
+      span: {
+        color: theme.palette.primary.main,
+      },
+    },
+    ".image-box": {
+      background: `url("/company/partner_image.png") no-repeat`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    },
+    ".icon-box": {
+      background: `url("/company/icon_union_white.svg") no-repeat`,
+    },
+  },
+  ":nth-of-type(3):hover": {
+    p: {
+      color: theme.palette.info.main,
+      span: {
+        color: "#FEBC08 !important",
+      },
+    },
+    ".image-box": {
+      background: `url("/company/partner_image.png") no-repeat`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+    },
+    ".icon-box": {
+      background: `url("/company/icon_union_white.svg") no-repeat`,
     },
   },
   [theme.breakpoints.down("lg")]: {
     ":not(:last-child)": { marginBottom: "4rem" },
     ".item": {
       ".title": {
+        color: theme.palette.info.main,
         "& span": {
           fontSize: "2.6rem",
           minHeight: "auto",
-          color: theme.palette.primary.light,
-        },
-        "& span.yellow": {
           color: theme.palette.primary.light,
         },
       },
@@ -320,6 +443,11 @@ const Item = styled(Grid, {
       },
       ".icon-box": {
         display: "none",
+      },
+    },
+    ":nth-of-type(3)": {
+      ".title span": {
+        color: "#FEBC08",
       },
     },
   },
@@ -449,6 +577,9 @@ const StyledSwiper = styled(Swiper)(({ theme }) => ({
 const StyledSwiperSlide = styled(SwiperSlide)(({ theme }) => ({
   ".image-box": {
     height: "46.4rem",
+    img: {
+      objectFit: "contain",
+    },
   },
   h6: {
     textAlign: "center",
@@ -463,13 +594,204 @@ const StyledSwiperSlide = styled(SwiperSlide)(({ theme }) => ({
     },
   },
 }));
+const Realization = styled(Box)(({ theme }) => ({
+  background: "#F4F4F4;",
+  padding: "16rem 0",
+  ".MuiGrid-container ": {
+    alignItems: "center",
+  },
+  table: {
+    "th, td": {
+      fontSize: "2.4rem",
+      lineHeight: "4rem",
+    },
+    "tbody th": {
+      fontSize: "1.8rem",
+      lineHeight: "2.7rem",
+      color: theme.palette.info.contrastText,
+      borderRight: `1px solid ${theme.palette.info.dark}`,
+    },
+    ".default": {
+      color: "#9f9f9f",
+      fontWeight: 400,
+    },
+    ".active": {
+      color: theme.palette.primary.light,
+      fontWeight: 700,
+      span: {
+        fontWeight: 400,
+      },
+    },
+  },
+  ".image-box": {
+    height: "50rem",
+    img: {
+      objectFit: "contain",
+    },
+  },
+  [theme.breakpoints.down("md")]: {
+    padding: "8rem 0",
+    table: {
+      marginTop: "6rem",
+      "th, td": {
+        fontSize: "1.2rem",
+        lineHeight: "2.2rem",
+      },
+      "tbody th": {
+        fontSize: "1rem",
+        lineHeight: "1.5rem",
+      },
+    },
+    ".image-box": {
+      height: "25rem",
+    },
+  },
+}));
 const Partners = styled(Box)(({ theme }) => ({
   padding: "16rem 0",
   backgroundColor: "#f4f4f4",
-  ".map-area": {
-    background: `url("/company/map_image.png") bottom no-repeat`,
-    paddingTop: "42%",
-    backgroundSize: "contain",
-    // height: "70rem",
+  h1: {
+    marginBottom: "10rem",
   },
+  ".map-area": {
+    position: "relative",
+    background: `url("/company/map_image.png") bottom no-repeat`,
+    // paddingTop: "58%",
+    height: "83.6rem",
+    backgroundSize: "contain",
+  },
+  ".pointer": {
+    position: "absolute",
+    content: `""`,
+    background: `url("/company/map_pointer.png") no-repeat`,
+    width: "1.6rem",
+    height: "1.6rem",
+    ":hover > div": {
+      background: theme.palette.primary.main,
+      "::after": {
+        background: theme.palette.primary.main,
+      },
+    },
+    " > div": {
+      position: "relative",
+      width: "fit-content",
+      left: "50%",
+      transform: "translateX(-50%)",
+      "::after": {
+        position: "absolute",
+        content: `""`,
+        width: "0.1rem",
+        background: "#7c7c7c",
+        left: "50%",
+        transform: "translateX(-50%)",
+      },
+    },
+  },
+  ".pointer_01": {
+    left: "22.7rem",
+    bottom: "32.3rem",
+    " >div:not(.pointer)": {
+      top: "-20rem",
+      "::after": {
+        height: "13rem",
+      },
+    },
+  },
+  ".pointer_02": {
+    left: "64.4rem",
+    bottom: "47rem",
+    " >div:not(.pointer)": {
+      bottom: "-7rem",
+      "::after": {
+        height: "9rem",
+        top: "-7.5rem",
+      },
+    },
+  },
+  ".pointer_03": {
+    left: "66.2rem",
+    bottom: "49.3rem",
+    " >div:not(.pointer)": {
+      top: "-15rem",
+      "::after": {
+        height: "100%",
+        bottom: "-4.2rem",
+      },
+    },
+  },
+  ".pointer_04": {
+    left: "77.6rem",
+    bottom: "49.3rem",
+    " >div:not(.pointer)": {
+      bottom: "-24rem",
+      "::after": {
+        height: "25rem",
+        bottom: "9rem",
+      },
+    },
+  },
+  ".pointer_05": {
+    left: "81rem",
+    bottom: "47rem",
+  },
+  ".pointer_06": {
+    left: "82.4rem",
+    bottom: "44rem",
+    " >div:not(.pointer)": {
+      top: "-40rem",
+      maxWidth: "30.6rem",
+      h6: {
+        width: "30rem",
+        lineHeight: "3rem",
+      },
+      "::after": {
+        height: "25.2rem",
+        bottom: "-25.2rem",
+      },
+    },
+  },
+  ".pointer_07": {
+    left: "101rem",
+    bottom: "36.9rem",
+    " >div:not(.pointer)": {
+      top: "-27rem",
+      "::after": {
+        height: "16.3rem",
+        bottom: "-16.3rem",
+      },
+    },
+  },
+  ".pointer_08": {
+    left: "106rem",
+    bottom: "47.2rem",
+    " >div:not(.pointer)": {
+      top: "12rem",
+      "::after": {
+        height: "12.8rem",
+        bottom: "9rem",
+      },
+    },
+  },
+  [theme.breakpoints.down("xl")]: {
+    padding: "8rem 0",
+    h1: {
+      marginBottom: "6rem",
+    },
+    ".pointer > div": {
+      display: "none",
+    },
+    ".map-area": {
+      background: `url("/company/map_image_m.png") no-repeat center`,
+      backgroundSize: "contain",
+      height: "auto",
+      paddingTop: "43%",
+    },
+    ".pointer": {
+      display: "none",
+    },
+  },
+}));
+const PointerBox = styled(Box)(({ theme }) => ({
+  width: "fit-content",
+  position: "absolute",
 }));

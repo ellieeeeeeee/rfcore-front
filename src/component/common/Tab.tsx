@@ -2,8 +2,9 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Box, Container, styled } from "@mui/material";
 
+import TimeLine from "./TimeLine";
 interface Props {
   content: any;
 }
@@ -25,8 +26,9 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 20 }}>
+          {/* <Typography>{children}</Typography> */}
+          <TimeLine />
         </Box>
       )}
     </div>
@@ -48,30 +50,49 @@ export default function BasicTabs({ content }: Props) {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          {content.map((item: any) => (
-            <Tab label={item.title} {...a11yProps(0)} key={item.title} />
-          ))}
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
+    <TabContainer>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            {content.map((item: any) => (
+              <Tab label={item.title} {...a11yProps(0)} key={item.title} />
+            ))}
+          </Tabs>
+        </Box>
+        {content.map((item: any, idx: number) => (
+          <TabPanel value={value} index={idx} key={idx}>
+            {item.title}
+          </TabPanel>
+        ))}
       </Box>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-    </Box>
+    </TabContainer>
   );
 }
+const TabContainer = styled(Box)(({ theme }) => ({
+  ".MuiTabs-root": {
+    maxWidth: "144rem",
+    margin: "0 auto",
+  },
+  ".MuiTabs-flexContainer button": {
+    flex: 1,
+    maxWidth: "33.3%",
+    fontSize: "2.4rem",
+  },
+  ".MuiTab-root": {
+    color: theme.palette.secondary.contrastText,
+    fontWeight: 500,
+    padding: "2.2rem 0",
+  },
+  ".MuiTab-root.Mui-selected": {
+    color: theme.palette.primary.main,
+    fontWeight: 600,
+  },
+  ".MuiTabs-indicator": {
+    color: theme.palette.primary.main,
+    height: "0.3rem",
+  },
+}));

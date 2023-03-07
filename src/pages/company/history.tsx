@@ -4,9 +4,9 @@ import { Box, styled } from "@mui/material";
 import React from "react";
 
 const content = [
-  { title: "Present ~ 2015" },
-  { title: "2014 ~ 2010" },
-  { title: "2000 ~ 2009" },
+  { title: "Present ~ 2015", id: 1 },
+  { title: "2014 ~ 2010", id: 2 },
+  { title: "2000 ~ 2009", id: 3 },
 ];
 
 export default function history() {

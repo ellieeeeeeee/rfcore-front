@@ -8,6 +8,7 @@ body {
   /* height: 100%; */
   width: 100%;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -21,7 +22,6 @@ body {
   box-sizing: border-box;
 }
 body {
-  font-family: "Poppins", sans-serif;
   color: #000;
   line-height: 18px;
 }
@@ -39,7 +39,6 @@ img {
   vertical-align: middle;
   width: 100%;
   border: 0px;
-  object-fit: cover;
 }
 table {
   border-collapse: collapse;
@@ -47,8 +46,10 @@ table {
   width: 100%;
   table-layout: fixed;
 }
-table td img {
-  vertical-align: middle;
+table th,
+table td,
+button {
+  font-family: "Poppins", sans-serif !important;
 }
 a {
   display: inline-block;
@@ -112,6 +113,9 @@ details[open] summary::after {
 .icon-box,
 .image-box {
   position: relative;
+}
+.swiper-slide img {
+  object-fit: cover !important;
 }
 @media (max-width: 1100px) {
   .inMobile {
