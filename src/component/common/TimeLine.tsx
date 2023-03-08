@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, styled } from "@mui/material";
+import { Box, List, ListItem, ListItemText, styled } from "@mui/material";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -7,69 +7,86 @@ import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 
-export default function TimeLine() {
-  const content = [
-    {
-      year: 2021,
-      content: [
-        "Participated in the project “development of Fanout Wafer Level Package (FOWLP)-based 28GHz millimeter wave band antenna integrated package module.",
-        "Participated in the project “development of weather radar signal processing technology”.",
-        "Participated in the project “development of technology for eVTOL flight stability and operability demonstration test evaluation and collision avoidance process.",
-        "Participated in the project “development of collision detection radar technology for eVTOL”.",
-      ],
-    },
-    {
-      year: 2020,
-      content: [
-        "Certified with MAIN-BIZ",
-        "Certified with Best Family Friendly Management",
-        "Participated in the project “development of 120GHz ultra-light and ultra-low-power radar SoC for Occupancy Monitoring System(OMS)”",
-        "Participated in the project “development of marine environment real-time monitoring and prediction simulation for autonomous navigation ship”",
-      ],
-    },
-    {
-      year: 2019,
-      content: [
-        "Certified with AS 9100",
-        "Selected as Small Giant company",
-        "Developed “Management and Technology development of illegal fishing marine ecosystem based on multiple UAV “",
-        "Developed “Development of digital transmitter based on tile conformation SoC/SIP for Active Phased Array system ”",
-      ],
-    },
-    {
-      year: 2018,
-      content: [
-        "Developed “ Broadband GaN PA MMIC and Export-Oriented Power Amplifier “",
-        "Awarded with 19th Best Radio wave broadcasting technology",
-        "Awarded $10 million Export Prize",
-      ],
-    },
-  ];
+interface Props {
+  content?: any;
+}
+export default function TimeLine({ content }: Props) {
+  console.log("content", content);
   return (
-    <Box>
+    <TimelineBox>
       <Timeline position="alternate">
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Eat</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Code</TimelineContent>
-        </TimelineItem>
-        <TimelineItem>
-          <TimelineSeparator>
-            <TimelineDot />
-            <TimelineConnector />
-          </TimelineSeparator>
-          <TimelineContent>Sleep</TimelineContent>
-        </TimelineItem>
+        {content.map((item: any) => (
+          <TimelineItem key={item.year}>
+            <TimelineSeparator>
+              <TimelineDot />
+              <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent>
+              <Box className="content-box">
+                <h4 className="title">{item.year}</h4>
+                <List>
+                  {item.description.map((item: any, idx: number) => (
+                    <ListItem key={idx}>
+                      <ListItemText primary={item} />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </TimelineContent>
+          </TimelineItem>
+        ))}
       </Timeline>
-    </Box>
+    </TimelineBox>
   );
 }
+const TimelineBox = styled(Box)(({ theme }) => ({
+  ".MuiTimeline-root, .MuiTimelineContent-root, .MuiTimelineItem-root::before":
+    {
+      padding: 0,
+    },
+  ".MuiTimelineItem-root:nth-of-type(odd) .content-box": {
+    padding: "0 0 0 10rem",
+  },
+  ".MuiTimelineItem-root:nth-of-type(even) .content-box": {
+    padding: "0 10rem 0 0",
+    span: {
+      //   textAlign: "right",
+    },
+  },
+  ".MuiTimelineDot-root": {
+    background: "#FEBC08;",
+    width: "1.5rem",
+    height: "1.5rem",
+    margin: 0,
+    padding: 0,
+    boxShadow: "none",
+  },
+  ".MuiTimelineConnector-root": {
+    width: "0.1rem",
+    backgroundColor: theme.palette.info.dark,
+  },
+  ".MuiTimelineItem-root:last-child .MuiTimelineConnector-root": {
+    display: "none",
+  },
+  ".MuiListItemText-root": {
+    margin: "0 0 4rem 0",
+    span: {
+      color: theme.palette.info.contrastText,
+      fontSize: "2rem",
+      lineHeight: "3rem",
+      fontWeight: 400,
+    },
+  },
+  ".content-box": {
+    h4: {
+      fontSize: "4.8rem",
+      lineHeight: "7.2rem",
+      fontWeight: 700,
+      marginBottom: "2rem",
+      color: theme.palette.info.main,
+    },
+    "ul,li": {
+      padding: 0,
+    },
+  },
+}));

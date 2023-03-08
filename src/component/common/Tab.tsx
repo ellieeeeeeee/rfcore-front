@@ -1,38 +1,12 @@
 import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import { Box, Container, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 
-import TimeLine from "./TimeLine";
+import TabPanel from "./TabPanel";
+
 interface Props {
   content: any;
-}
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-//content
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 20 }}>
-          {/* <Typography>{children}</Typography> */}
-          <TimeLine />
-        </Box>
-      )}
-    </div>
-  );
 }
 
 function a11yProps(index: number) {
